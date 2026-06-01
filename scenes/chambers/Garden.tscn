@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://garden_001"]
+
+[ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/garden.png" id="2_garden_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/plant_carnivorous.png" id="4_carnivore"]
+[ext_resource type="Texture2D" path="res://assets/objects/plant_glowing_purple.png" id="5_glowplant"]
+[ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="6_crystal"]
+
+[sub_resource type="RectangleShape2D" id="Rect_Dissolution"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Threshold"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Writing"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Carnivore"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="Rect_Glow"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="Rect_Crystal"]
+size = Vector2(60, 60)
+
+[node name="Garden" type="Node2D"]
+script = ExtResource("1_chamber_base")
+chamber_id = "garden"
+chamber_name = "The Garden"
+chamber_description = "An outdoor space with simulated weather, plants, sky. Some beautiful, some carnivorous. For walking, thinking, being."
+aspect_hint = "Girl"
+background_texture = ExtResource("2_garden_bg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_garden_bg")
+
+[node name="Zone_Dissolution" type="Area2D" parent="."]
+position = Vector2(300, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Dissolution"]
+shape = SubResource("Rect_Dissolution")
+
+[node name="Zone_Threshold" type="Area2D" parent="."]
+position = Vector2(960, 900)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
+shape = SubResource("Rect_Threshold")
+
+[node name="Zone_Writing" type="Area2D" parent="."]
+position = Vector2(1620, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Writing"]
+shape = SubResource("Rect_Writing")
+
+[node name="Object_Carnivore" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1200, 700)
+object_id = "carnivorous_plant"
+object_name = "Carnivorous Plant"
+object_description = "Beautiful and hungry. It shifts color based on which aspect was last dominant."
+dialogue_node = "garden_carnivore"
+emotional_effect = {"sharpness": 1}
+texture = ExtResource("4_carnivore")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Carnivore"]
+shape = SubResource("Rect_Carnivore")
+
+[node name="Object_GlowPlant" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(500, 600)
+object_id = "glowing_plant"
+object_name = "Glowing Purple Plant"
+object_description = "Bioluminescent. It pulses when you look at it."
+dialogue_node = "garden_glow"
+emotional_effect = {"warmth": 1}
+texture = ExtResource("5_glowplant")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_GlowPlant"]
+shape = SubResource("Rect_Glow")
+
+[node name="Object_Crystal" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1500, 500)
+object_id = "crystal_growth"
+object_name = "Crystal Growth"
+object_description = "Something crystallizing out of the soil. It wasn't here yesterday."
+dialogue_node = "garden_crystal"
+memory_id = "garden_crystal_memory"
+texture = ExtResource("6_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Crystal"]
+shape = SubResource("Rect_Crystal")

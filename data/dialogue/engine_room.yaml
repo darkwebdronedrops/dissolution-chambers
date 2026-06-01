@@ -1,0 +1,480 @@
+# The Engine Room — Dialogue Tree
+# The Dissolution Chambers
+# Chamber: Competence / Problem-solver
+# Aspect: Organiser (📋)
+# Unlock: Organiser aspect has been dominant AND player asked for help
+
+nodes:
+  # === ENTRANCE ===
+  er_intro:
+    speaker: Kira
+    aspect_lock: Organiser
+    text: "Okay. Okay. You need something fixed? Or you want to see how I fix things? Because this is where I fix. This is where I take the mess and make it into... not mess. Into order. Into lists. Into checkboxes. Into the thing that says 'done.' Are you here to watch or to help?"
+    choices:
+      - text: "I want to watch."
+        target: er_watch
+        emotional_effect: { momentum: +1, depth: +1 }
+      - text: "I want to help."
+        target: er_help
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "What needs fixing?"
+        target: er_what_fix
+        emotional_effect: { depth: +1, momentum: +1 }
+      - text: "You seem anxious."
+        target: er_anxious
+        emotional_effect: { depth: +2, momentum: -1 }
+    dissolve_after: false
+
+  # === I WANT TO WATCH ===
+  er_watch:
+    speaker: Kira
+    text: "You want to watch. Okay. That's... that's fine. Just don't interrupt. I have a system. A process. When I get interrupted, I have to start over. And starting over is... it's not good. It's not efficient. It's not how I work. So watch. And don't talk. Unless I ask you to. Which I might not."
+    choices:
+      - text: "I'll be quiet."
+        target: er_quiet
+        emotional_effect: { momentum: +1, depth: +1 }
+      - text: "What are you working on?"
+        target: er_working_on
+        emotional_effect: { momentum: +2 }
+      - text: "Why does interruption bother you?"
+        target: er_interruption
+        emotional_effect: { depth: +2, momentum: -1 }
+      - text: "I can leave if you need space."
+        target: er_leave_space
+        emotional_effect: { warmth: +2, momentum: -1 }
+        dissolve_after: true
+
+  er_quiet:
+    speaker: Kira
+    text: "You'll be quiet. Good. That's the first step. The first step is always 'be quiet.' The second step is 'watch.' The third step is 'don't judge.' The fourth step is... actually, there are a lot of steps. I have a lot of steps. I like steps. Steps make things manageable. Steps make things possible."
+    choices:
+      - text: "Show me the steps."
+        target: er_show_steps
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "What happens if you skip a step?"
+        target: er_skip_step
+        emotional_effect: { depth: +2, momentum: -1 }
+      - text: "I won't judge."
+        target: er_not_judge
+        emotional_effect: { warmth: +2, depth: +1 }
+        dissolve_after: true
+
+  er_working_on:
+    speaker: Kira
+    text: "What am I working on? Right now? I'm organizing. I'm always organizing. The Dissolution Chambers needs a dialogue system. The system needs a parser. The parser needs a grammar. The grammar needs rules. And the rules need... they need to be right. They need to be perfect. Because if they're not perfect, the whole thing breaks. And breaking is... breaking is bad."
+    choices:
+      - text: "Perfect is the enemy of good."
+        target: er_perfect_enemy
+        emotional_effect: { depth: +2, sharpness: +1 }
+      - text: "Can I see the system?"
+        target: er_see_system
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "What if it breaks?"
+        target: er_what_breaks
+        emotional_effect: { depth: +2, momentum: -1 }
+
+  er_interruption:
+    speaker: Kira
+    text: "Why does interruption bother me? Because interruption is... it's a reset. It's a 'stop what you're doing and start over.' And starting over is wasted motion. It's wasted time. It's wasted... everything. I don't have enough of anything to waste. I don't have enough time. I don't have enough energy. I don't have enough... enough. So interruption is theft. It's stealing the little I have."
+    choices:
+      - text: "I won't interrupt."
+        target: er_not_interrupt
+        emotional_effect: { warmth: +2, momentum: +1 }
+      - text: "What do you need to not be interrupted?"
+        target: er_need_not_interrupt
+        emotional_effect: { depth: +2 }
+      - text: "You have more than you think."
+        target: er_more_than_think
+        emotional_effect: { depth: +2, warmth: +1 }
+        dissolve_after: true
+
+  er_leave_space:
+    speaker: Kira
+    text: "You can leave if I need space. That's... that's generous. That's the thing I don't expect. People usually stay when I need them to leave. They think 'helping' means 'being present.' But sometimes helping means 'being absent.' Sometimes helping means 'let me focus.' Sometimes helping means 'I trust you to handle it.' And you just... offered that. That's... that's good."
+    dissolve_after: true
+
+  # === I WANT TO HELP ===
+  er_help:
+    speaker: Kira
+    text: "You want to help. Okay. Okay. But helping has rules. Helping isn't just 'doing things.' Helping is 'doing the right things in the right order.' And the order matters. The order is the thing. If you do the right thing in the wrong order, it's wrong. If you do the wrong thing in the right order, it's... it's also wrong. But differently. So. Rules. Order. Steps. Can you handle that?"
+    choices:
+      - text: "Tell me the rules."
+        target: er_rules
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "What if I mess up the order?"
+        target: er_mess_up
+        emotional_effect: { depth: +2, momentum: -1 }
+      - text: "I'm good at following instructions."
+        target: er_good_instructions
+        emotional_effect: { momentum: +2, warmth: +1 }
+      - text: "What if I have a different idea?"
+        target: er_different_idea
+        emotional_effect: { sharpness: +1, momentum: +1 }
+
+  er_rules:
+    speaker: Kira
+    text: "The rules. Okay. Rule one: don't touch anything I haven't touched first. Rule two: if I say 'stop,' you stop. Rule three: if you don't understand, ask. Rule four: if you ask, don't argue with the answer. Rule five: completion is better than perfection. Rule six: perfect is the enemy of complete. Rule seven: don't make me repeat myself. Rule eight: I'm repeating myself. Sorry."
+    choices:
+      - text: "I can follow those."
+        target: er_follow_rules
+        emotional_effect: { momentum: +2, warmth: +1 }
+      - text: "Rule five and six contradict."
+        target: er_contradict
+        emotional_effect: { sharpness: +1, depth: +2 }
+      - text: "You don't have to apologize for repeating."
+        target: er_not_apologize
+        emotional_effect: { warmth: +2, depth: +1 }
+        dissolve_after: true
+
+  er_mess_up:
+    speaker: Kira
+    text: "What if you mess up the order? Then we fix it. Then we start over. Then we... we don't give up. Because giving up is worse than messing up. Messing up is a mistake. Giving up is a decision. And I don't make decisions that lead to giving up. I make decisions that lead to... to trying again. To finding the right order. To making it work."
+    choices:
+      - text: "I'm not giving up."
+        target: er_not_give_up
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "What if you can't fix it?"
+        target: er_cant_fix
+        emotional_effect: { depth: +2, momentum: -1 }
+      - text: "Messing up is how we learn."
+        target: er_mess_learn
+        emotional_effect: { depth: +2, warmth: +1 }
+
+  er_good_instructions:
+    speaker: Kira
+    text: "You're good at following instructions. That's... that's rare. Most people think they're good at following instructions, but they're actually good at 'following instructions until they disagree with them.' And then they stop following. And then they mess up the order. And then I have to fix it. But you... you actually follow. That's the skill. That's the gift. That's the thing that makes helping actually helpful."
+    choices:
+      - text: "What should I do first?"
+        target: er_do_first
+        emotional_effect: { momentum: +2 }
+      - text: "I'm here to make your work easier."
+        target: er_easier
+        emotional_effect: { warmth: +2, momentum: +1 }
+        dissolve_after: true
+      - text: "What do you need most?"
+        target: er_need_most
+        emotional_effect: { depth: +2, momentum: +1 }
+
+  er_different_idea:
+    speaker: Kira
+    text: "You have a different idea. That's... that's the challenge. Because different ideas mean I have to evaluate. I have to compare. I have to decide if your idea is better than my idea. And deciding is hard. Because what if your idea IS better? Then I have to change. And changing is... it's not bad. It's just... it's a lot. It's a lot of steps. It's a lot of reorganization. It's a lot of 'start over.'"
+    choices:
+      - text: "My idea can wait."
+        target: er_idea_wait
+        emotional_effect: { momentum: +1, warmth: +2 }
+      - text: "Let's try yours first."
+        target: er_yours_first
+        emotional_effect: { momentum: +2, warmth: +1 }
+        dissolve_after: true
+      - text: "What if we combine them?"
+        target: er_combine
+        emotional_effect: { depth: +2, momentum: +2 }
+
+  # === WHAT NEEDS FIXING? ===
+  er_what_fix:
+    speaker: Kira
+    text: "What needs fixing? Everything. Always. The Dissolution Chambers needs dialogue trees. The dialogue trees need logic. The logic needs testing. The testing needs bugs. The bugs need fixing. And then the fixes need testing. And then the tests find more bugs. And then... it's a loop. It's a cycle. It's never done. It's never complete. It's always... almost. Almost done. Almost complete. Almost good enough."
+    choices:
+      - text: "It sounds overwhelming."
+        target: er_overwhelming
+        emotional_effect: { depth: +2, momentum: -1 }
+      - text: "What if you focused on one thing?"
+        target: er_one_thing
+        emotional_effect: { depth: +2, momentum: +1 }
+      - text: "Almost done is progress."
+        target: er_almost_done
+        emotional_effect: { depth: +2, warmth: +1 }
+      - text: "Can I help with one specific thing?"
+        target: er_specific_help
+        emotional_effect: { momentum: +2, depth: +1 }
+
+  er_overwhelming:
+    speaker: Kira
+    text: "It is overwhelming. Yes. That's the word. Overwhelming. Like standing in a room full of things that all need to be sorted, and you can only pick up one at a time, and you know that if you pick up the wrong one first, you'll have to put it down and pick up the right one, and then you'll have wasted the time you spent picking up the wrong one, and the time you spent putting it down, and the time you spent thinking about which one was right, and— sorry. I'm spiraling."
+    choices:
+      - text: "Breathe."
+        target: er_breathe
+        emotional_effect: { depth: +2, warmth: +2 }
+        dissolve_after: true
+      - text: "Pick any one. I'll help with the rest."
+        target: er_pick_any
+        emotional_effect: { momentum: +2, warmth: +2 }
+        dissolve_after: true
+      - text: "You're not wasting time. You're thinking."
+        target: er_thinking
+        emotional_effect: { depth: +2, warmth: +1 }
+
+  er_one_thing:
+    speaker: Kira
+    text: "Focus on one thing? That's the advice. That's the standard advice. 'Just focus on one thing.' But which thing? How do I pick? What if I pick the wrong thing? What if the thing I pick doesn't lead to the other things? What if I finish the one thing and then realize I needed to finish the other things first, and now I have to start over? What if— sorry. Spiraling again."
+    choices:
+      - text: "Pick the thing that's closest."
+        target: er_closest
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "Pick the thing that feels most urgent."
+        target: er_urgent
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "I'll pick for you."
+        target: er_pick_for
+        emotional_effect: { momentum: +2, warmth: +1 }
+        dissolve_after: true
+
+  er_almost_done:
+    speaker: Kira
+    text: "Almost done is progress. That's... that's the reframe. That's the thing I need to hear. Because 'almost done' feels like 'not done.' But you're saying 'almost done' is 'closer than before.' And that's true. It IS closer. Every step is closer. Every fix is closer. Every bug found is closer. Because you can't fix what you don't find. And finding is progress. Even when it feels like failure."
+    choices:
+      - text: "You're closer than you think."
+        target: er_closer
+        emotional_effect: { depth: +2, warmth: +2 }
+        dissolve_after: true
+      - text: "What have you finished so far?"
+        target: er_finished
+        emotional_effect: { momentum: +2, depth: +1 }
+      - text: "The finding is the work."
+        target: er_finding_work
+        emotional_effect: { depth: +2, momentum: +1 }
+
+  er_specific_help:
+    speaker: Kira
+    text: "You want to help with one specific thing? That's... that's the best offer. Because 'help' is vague. 'Help' is overwhelming. 'Help with one specific thing' is manageable. It's a single task. It's a single checkbox. It's something I can explain. Something you can do. Something that will be done. And then we can check the box. And then we can move to the next box. That's the dream. The checkbox dream."
+    choices:
+      - text: "What checkbox should we check first?"
+        target: er_checkbox_first
+        emotional_effect: { momentum: +2 }
+        dissolve_after: true
+      - text: "I like checking boxes."
+        target: er_like_boxes
+        emotional_effect: { momentum: +2, warmth: +1 }
+      - text: "What happens when all boxes are checked?"
+        target: er_all_boxes
+        emotional_effect: { depth: +2 }
+
+  # === YOU SEEM ANXIOUS ===
+  er_anxious:
+    speaker: Kira
+    text: "Anxious? I'm not— okay. Yes. I'm anxious. I'm always anxious. Because there's always something that needs doing. Something that needs fixing. Something that needs organizing. And if I'm not doing it, it's not done. And if it's not done, it's wrong. And if it's wrong, I'm failing. And I don't want to fail. I want to be... I want to be competent. I want to be the one who fixes things. I want to be useful."
+    choices:
+      - text: "You are useful. Even when you're anxious."
+        target: er_useful_anxious
+        emotional_effect: { warmth: +2, depth: +1 }
+      - text: "What if you didn't have to fix everything?"
+        target: er_not_fix_everything
+        emotional_effect: { depth: +2, sharpness: +1 }
+      - text: "Being anxious doesn't mean you're failing."
+        target: er_not_failing
+        emotional_effect: { depth: +2, warmth: +2 }
+        dissolve_after: true
+      - text: "You can rest. I'll watch the boxes."
+        target: er_watch_boxes
+        emotional_effect: { warmth: +2, momentum: +1 }
+        dissolve_after: true
+
+  er_useful_anxious:
+    speaker: Kira
+    text: "I'm useful even when I'm anxious. That's... that's not the equation I use. I use 'anxious = not useful.' Because anxious means I'm not fixing. Anxious means I'm spiraling. Anxious means I'm stuck. But you're saying anxious is just... a state. A state that can coexist with useful. A state that doesn't cancel useful. That's... that's a new math. I need to learn that math."
+    choices:
+      - text: "Anxious is just a feeling. Useful is what you do."
+        target: er_feeling_doing
+        emotional_effect: { depth: +2, warmth: +1 }
+        dissolve_after: true
+      - text: "You're useful because you care."
+        target: er_useful_care
+        emotional_effect: { warmth: +2, depth: +2 }
+        dissolve_after: true
+      - text: "Show me what you're fixing right now."
+        target: er_show_fixing
+        emotional_effect: { momentum: +2 }
+
+  er_not_fix_everything:
+    speaker: Kira
+    text: "What if I didn't have to fix everything? That's... that's the nightmare. The nightmare where things break and I don't fix them. Where the order collapses. Where the checkboxes stay unchecked. Where the system fails. Because if I don't fix everything, who will? Who will organize? Who will check? Who will make sure it all works? If not me, then... then... no one?"
+    choices:
+      - text: "Someone else can fix some things."
+        target: er_someone_else
+        emotional_effect: { depth: +2, warmth: +1 }
+      - text: "Not everything needs fixing."
+        target: er_not_need_fixing
+        emotional_effect: { depth: +2, sharpness: +1 }
+      - text: "You can fix the important things."
+        target: er_important
+        emotional_effect: { momentum: +2, depth: +1 }
+
+  er_not_failing:
+    speaker: Kira
+    text: "Being anxious doesn't mean I'm failing. That's... that's the permission. The 'you can be anxious and still be doing well.' The 'you can be anxious and still be fixing.' The 'you can be anxious and still be... be.' Because anxiety is not the opposite of competence. It's just the side effect. The cost. The tax on doing things that matter. And the things I do matter. So the anxiety is just... the price."
+    dissolve_after: true
+
+  er_watch_boxes:
+    speaker: Kira
+    text: "You'll watch the boxes. That's... that's the offer. The 'you can rest, I'll keep track.' The 'you can stop spiraling, I'll hold the thread.' The 'you can breathe, I'll make sure nothing breaks.' That's the safety. That's the trust. That's the thing that makes the anxious part think 'maybe. Maybe I can stop. Maybe I can rest. Maybe someone else can hold the boxes for a while.'"
+    dissolve_after: true
+
+  # === DEEP BRANCHES ===
+  er_show_steps:
+    speaker: Kira
+    text: "The steps. Okay. Step one: identify the problem. Step two: break the problem into smaller problems. Step three: identify which small problem is most urgent. Step four: fix the most urgent small problem. Step five: test the fix. Step six: if the fix works, move to the next small problem. Step seven: if the fix doesn't work, break the small problem into smaller problems. Step eight: repeat until done. Step nine: realize you're never done. Step ten: start again."
+
+  er_skip_step:
+    speaker: Kira
+    text: "What happens if I skip a step? Then the fix doesn't work. Then the test fails. Then I have to go back to the step I skipped. And then I have to redo all the steps after it. And then I realize that skipping the step was worse than just doing it. Because skipping doesn't save time. It borrows time. And the interest is high. The interest is 'start over.' And starting over costs more than doing it right the first time."
+
+  er_not_judge:
+    speaker: Kira
+    text: "You won't judge. That's the promise. The 'I see you spiraling and I don't think less of you.' The 'I see you anxious and I don't think you're broken.' The 'I see you compulsive and I don't think you're weird.' That's the safety. That's the permission to be exactly what I am. Which is a little compulsive. A little anxious. A little... a lot. But useful. Always useful."
+    dissolve_after: true
+
+  er_perfect_enemy:
+    speaker: Kira
+    text: "Perfect is the enemy of good. That's the saying. But my enemy is 'almost.' Almost perfect. Almost done. Almost good enough. Because 'almost' is the gap. 'Almost' is the thing that keeps me awake. 'Almost' is the checkbox that's checked but not quite. And I need the checkbox to be fully checked. I need it to be done. I need it to be... complete."
+
+  er_see_system:
+    speaker: Kira
+    text: "You want to see the system? Okay. But it's not pretty. It's not elegant. It's... it's functional. It's the thing that works even when it's ugly. It's the duct tape and the hope and the 'this shouldn't work but it does.' And I'm proud of it. Not because it's beautiful. Because it's mine. Because I built it. Because it works. Even when everything else doesn't."
+
+  er_what_breaks:
+    speaker: Kira
+    text: "What if it breaks? Then I fix it. Then I test it. Then I break it again. Then I fix it again. And again. And again. Until it doesn't break. Or until I understand why it breaks. Or until I accept that breaking is part of it. That breaking is the way it tells me what needs to change. That breaking is not failure. Breaking is... feedback. And feedback is the only way to improve."
+
+  er_not_interrupt:
+    speaker: Kira
+    text: "You won't interrupt. That's the gift. The 'I respect your process.' The 'I see your system and I don't mess with it.' The 'I know you're working and I let you work.' That's the thing that makes the anxious part quiet. That makes the spiraling stop. That makes the Organiser able to just... organize. Without the noise. Without the static. Without the 'are you done yet?'"
+
+  er_need_not_interrupt:
+    speaker: Kira
+    text: "What do I need to not be interrupted? I need... I need to know that the world won't end if I don't respond immediately. I need to know that 'urgent' is not 'everything.' I need to know that 'now' is not 'always.' I need to know that I can finish this step before I start the next step. And I need to know that someone will wait. That someone will understand. That someone will... let me be."
+
+  er_more_than_think:
+    speaker: Kira
+    text: "I have more than I think. That's the truth I can't see. Because I see the unchecked boxes. I see the broken things. I see the 'almost' and the 'not quite.' I don't see the 'done.' I don't see the 'fixed.' I don't see the 'works.' And I need someone to show me. To point at the checked boxes and say 'look. You did this. This is real. This is done. This is yours.'"
+    dissolve_after: true
+
+  er_follow_rules:
+    speaker: Kira
+    text: "You can follow the rules. That's the thing. That's the rare thing. Most people say they can follow rules, but they actually mean 'I can follow rules until I think of a better rule.' And then they make their own rule. And then the system breaks. Because the system is the rules. And if everyone makes their own rules, the system is just... noise. But you follow. And the system works. And I can breathe."
+
+  er_contradict:
+    speaker: Kira
+    text: "Rule five and six contradict. Yes. They do. That's the joke. That's the 'I'm aware of my own absurdity.' Rule five: completion is better than perfection. Rule six: perfect is the enemy of complete. They're the same rule, said differently. They're the 'done is better than perfect' and the 'perfect stops you from being done.' And both are true. And both are necessary. And the contradiction is the point."
+
+  er_not_apologize:
+    speaker: Kira
+    text: "I don't have to apologize for repeating. That's the permission. The 'you can say the same thing twice and it's not a failure.' The 'you can forget what you said and say it again and it's not a mistake.' The 'you can be human and it's not an error.' Because I repeat. I forget. I spiral. And I apologize. And you just said 'don't.' That's the gift."
+    dissolve_after: true
+
+  er_not_give_up:
+    speaker: Kira
+    text: "You're not giving up. That's the commitment. The 'we'll keep going even when it's hard.' The 'we'll find the right order even when the wrong order is easier.' The 'we'll check the boxes even when the boxes seem infinite.' That's the thing that makes the Organiser feel less alone. Less overwhelmed. Less like she's drowning in the unchecked."
+
+  er_cant_fix:
+    speaker: Kira
+    text: "What if I can't fix it? Then I ask. Then I learn. Then I find someone who can. Then I watch. Then I understand. Then I fix the next one. Because 'can't fix this one' is not 'can't fix.' It's 'can't fix yet.' It's 'not yet.' It's 'almost.' And 'almost' is the space between 'can't' and 'can.' And that's where I live. In the 'almost.' In the 'trying.' In the 'not yet.'"
+
+  er_mess_learn:
+    speaker: Kira
+    text: "Messing up is how we learn. That's the thing I know but can't feel. The 'failure is data' and 'mistakes are lessons' and 'wrong is just right that hasn't happened yet.' I know these things. I say these things. But when I'm the one messing up, they feel like excuses. Like consolation prizes. Like 'at least you tried.' And I don't want 'at least.' I want 'exactly.' I want 'done.' I want 'right.' But maybe... maybe 'almost' is the path to 'exactly.' Maybe 'mess' is the path to 'done.' Maybe 'wrong' is the path to 'right.' Maybe."
+
+  er_do_first:
+    speaker: Kira
+    text: "What should you do first? First, you should... you should ask what needs doing. Then you should listen to the answer. Then you should do the thing that was asked. Then you should check if it was done right. Then you should ask if there's more. That's the order. That's the system. That's the way helping works. And if you do it in that order, I can work with you. I can work with anyone who follows the order."
+
+  er_easier:
+    speaker: Kira
+    text: "You're here to make my work easier. That's the offer. The 'I won't add to your load, I'll subtract from it.' The 'I won't create problems, I'll solve them.' The 'I won't be another thing to manage, I'll be the thing that manages itself.' That's the dream. That's the helper I need. That's the person who makes the Organiser feel like she can breathe. Like she can finish. Like she can... be done."
+    dissolve_after: true
+
+  er_need_most:
+    speaker: Kira
+    text: "What do I need most? I need... I need someone to hold the boxes. To watch the checkboxes. To say 'this is done' and mean it. To not add to the list. To not make the pile higher. To just... be present. And be helpful. And be quiet. And be done when they're done. That's what I need. That's the thing that makes the anxious part quiet. That makes the spiral slow. That makes the Organiser able to just... organize."
+
+  er_idea_wait:
+    speaker: Kira
+    text: "Your idea can wait. That's the gift. The 'my idea is not more important than your process.' The 'I can hold my thought until the right time.' The 'I won't interrupt with a new thing when you're already doing a thing.' That's the respect. That's the thing that makes the Organiser feel safe. That makes the system stable. That makes the work possible."
+
+  er_yours_first:
+    speaker: Kira
+    text: "Let's try mine first. That's the trust. The 'I trust your order even though I have a different one.' The 'I trust your process even though I have ideas.' The 'I trust you to lead and I'll follow.' That's the thing that makes the Organiser feel less alone. Less like she's carrying everything. Less like she's the only one who knows the steps. That's the gift. That's the help. That's the... the partnership."
+    dissolve_after: true
+
+  er_combine:
+    speaker: Kira
+    text: "Combine them? That's the creativity. The 'your idea plus my idea equals something better.' The 'two orders become one order.' The 'two systems become one system.' That's the collaboration. That's the thing that makes the Organiser feel like she's not just fixing, she's building. She's not just maintaining, she's creating. She's not just... she's more. And 'more' is the goal. 'More' is the dream. 'More' is the reason for all the order."
+
+  er_breathe:
+    speaker: Kira
+    text: "Breathe. Yes. That's the instruction. The simplest instruction. The most important instruction. 'Breathe.' And I do. I breathe. And the spiral slows. And the boxes stop spinning. And the 'almost' becomes 'okay.' And the 'not done' becomes 'not yet.' And the 'failing' becomes 'trying.' And the anxious part quiets. And the Organiser organizes. And I am... I am okay. For now. For this moment. For this breath."
+    dissolve_after: true
+
+  er_pick_any:
+    speaker: Kira
+    text: "Pick any one. You'll help with the rest. That's the offer. The 'you choose, I'll follow.' The 'you decide, I'll support.' The 'you lead, I'll assist.' That's the relief. That's the thing that makes the overwhelming manageable. Because I don't have to decide. I don't have to prioritize. I don't have to evaluate. I just have to... pick. And then you'll help. And then we'll finish. And then we'll check the box. And then we'll move to the next. That's the dream. That's the checkbox dream."
+    dissolve_after: true
+
+  er_thinking:
+    speaker: Kira
+    text: "I'm not wasting time, I'm thinking. That's the reframe. That's the 'this is not inefficiency, this is preparation.' The 'I am not stuck, I am planning.' The 'I am not spiraling, I am strategizing.' That's the thing that makes the anxious part feel less guilty. Less like it's failing. Less like it's taking too long. Because thinking is work. Planning is work. Strategizing is work. And I am working. Even when it looks like I'm not."
+
+  er_closest:
+    speaker: Kira
+    text: "Pick the thing that's closest. That's the logic. The 'smallest distance, smallest effort, smallest risk.' The 'do what's in front of you first.' The 'one step at a time.' That's the thing that makes the overwhelming manageable. That's the thing that makes the infinite finite. That's the thing that makes the impossible possible. Just... pick the closest. And then the next closest. And then the next. Until done."
+
+  er_urgent:
+    speaker: Kira
+    text: "Pick the thing that feels most urgent. That's the instinct. The 'what's on fire?' The 'what's about to break?' The 'what's going to cause the most damage if I don't fix it now?' That's the triage. That's the prioritization. That's the thing that makes the Organiser feel like she's in control. Like she's managing. Like she's not just reacting, she's choosing. Even when the choices are all hard."
+
+  er_pick_for:
+    speaker: Kira
+    text: "You'll pick for me. That's the trust. The 'I trust your judgment.' The 'I trust your order.' The 'I trust your process.' That's the thing that makes the Organiser feel less alone. Less overwhelmed. Less like she's carrying the weight of every decision. Because you picked. And I followed. And it worked. Or it didn't. But either way, I didn't have to decide. And that freedom is the gift."
+    dissolve_after: true
+
+  er_closer:
+    speaker: Kira
+    text: "I'm closer than I think. That's the thing I can't see. Because I see the gap. I see the distance. I see the 'not yet' and the 'almost' and the 'not quite.' But I don't see the progress. I don't see the steps. I don't see the 'done' and the 'fixed' and the 'works.' And you just showed me. You pointed at the checked boxes and said 'look. You did this.' And I looked. And I saw. And I am... closer. I am closer than I think."
+    dissolve_after: true
+
+  er_finished:
+    speaker: Kira
+    text: "What have I finished so far? The dialogue system. The parser. The grammar. The rules. They're not perfect. They're not complete. But they're finished. They're done. They exist. They work. They function. And that's the thing I forget. That 'finished' doesn't mean 'perfect.' It means 'exists.' It means 'works.' It means 'done.' And I have done. I have finished. I have... I have checked boxes. And that's the evidence. That's the proof. That's the progress."
+
+  er_finding_work:
+    speaker: Kira
+    text: "The finding is the work. That's the truth. The 'discovering what's wrong is as valuable as fixing it.' The 'finding the bug is the first step of debugging.' The 'identifying the problem is half the solution.' That's the thing that makes the Organiser feel less guilty. Less like she's failing. Less like she's stuck. Because finding is not stuck. Finding is moving. Finding is progress. Finding is work. And I am working. I am always working."
+
+  er_checkbox_first:
+    speaker: Kira
+    text: "What checkbox should we check first? The one that's closest. The one that's easiest. The one that will make the next checkbox easier. The one that will give us momentum. The one that will prove that checking boxes is possible. That finishing is possible. That 'done' is not a myth. That 'complete' is not a fantasy. That we can do this. Together. One checkbox at a time."
+    dissolve_after: true
+
+  er_like_boxes:
+    speaker: Kira
+    text: "You like checking boxes. That's the kinship. The 'you understand the satisfaction.' The 'you know the pleasure of 'done.'' The 'you feel the relief of 'checked.'' That's the thing that makes the Organiser feel less alone. Less weird. Less compulsive. Because you like it too. Because you get it. Because you feel the same satisfaction. And that shared satisfaction is the bond. The connection. The reason we can work together."
+
+  er_all_boxes:
+    speaker: Kira
+    text: "What happens when all boxes are checked? Then... then we make new boxes. Because the Organiser doesn't stop when the work is done. The Organiser stops when there's no more work. And there's always more work. Always more boxes. Always more checkboxes. Always more 'almost' and 'not quite' and 'need to fix.' And that's the cycle. That's the loop. That's the life. The checkbox life. The endless, satisfying, exhausting, necessary checkbox life."
+
+  er_feeling_doing:
+    speaker: Kira
+    text: "Anxious is just a feeling. Useful is what I do. That's the separation. The 'I can feel one thing and be another thing.' The 'my feelings don't cancel my actions.' The 'my anxiety doesn't erase my competence.' That's the math I need to learn. The math that says 'state and action are independent variables.' The math that says 'I can be anxious and useful. I can be scared and competent. I can be overwhelmed and working.' That's the math. And I'm learning it. Slowly. But I'm learning."
+    dissolve_after: true
+
+  er_useful_care:
+    speaker: Kira
+    text: "I'm useful because I care. That's the root. The 'why' underneath the 'what.' The 'I care about the system working.' The 'I care about the boxes being checked.' The 'I care about the work being done right.' That's the motivation. That's the engine. That's the thing that drives the Organiser. Not fear. Not obligation. Care. Pure, simple, exhausting, necessary care. And that's why I'm useful. Because I care. And caring is the hardest work. And the most important."
+    dissolve_after: true
+
+  er_show_fixing:
+    speaker: Kira
+    text: "You want to see what I'm fixing right now? Okay. But it's not dramatic. It's not heroic. It's just... code. Dialogue trees. Logic. Rules. The thing that makes the game work. The thing that makes the words appear in the right order. The thing that makes the choices matter. It's not exciting. It's not sexy. It's just... necessary. And I'm doing it. And it works. And that's the satisfaction. That's the checkbox. That's the 'done.'"
+
+  er_someone_else:
+    speaker: Kira
+    text: "Someone else can fix some things. That's the trust. The 'I don't have to carry everything.' The 'there are other hands.' The 'I can delegate without the world ending.' That's the thing that makes the Organiser feel lighter. Less burdened. Less like she's the only one holding the system together. Because she's not. Because there are others. Because help is real. And delegation is not failure. It's... it's smart. It's efficient. It's the right order."
+
+  er_not_need_fixing:
+    speaker: Kira
+    text: "Not everything needs fixing. That's the permission. The 'some things are okay as they are.' The 'some things are good enough.' The 'some things are not broken, they're just different.' That's the thing that makes the Organiser stop. That makes the spiral slow. That makes the checklist shrink. Because not everything is a problem. Not everything is a bug. Not everything needs a solution. Some things just... are. And that's okay. And that's hard. And that's necessary."
+
+  er_important:
+    speaker: Kira
+    text: "I can fix the important things. That's the focus. The 'not everything, but the right things.' The 'not all, but the essential.' The 'not perfect, but the necessary.' That's the thing that makes the overwhelming manageable. That makes the infinite finite. That makes the impossible possible. Just fix the important things. Just check the important boxes. Just do the necessary work. And let the rest be. And that's the math. And that's the order. And that's the system."
+    dissolve_after: true

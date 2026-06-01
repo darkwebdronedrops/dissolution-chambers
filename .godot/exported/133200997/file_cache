@@ -1,0 +1,12 @@
+res://scenes/chambers/Threshold.tscn::7cccd4f8445ef5d501e6aca88da29013::1780112114::res://.godot/exported/133200997/export-402aabe6d8b8e87b6f148bd07196f041-Threshold.scn
+res://scenes/ui/DialogueBox.tscn::c3cd551cdd55ab773fde98d74415b258::1780111579::res://.godot/exported/133200997/export-408fe0e8827d2e3117f7a3499e6fad6e-DialogueBox.scn
+res://scenes/Main.tscn::46d5f68e0327dd7106d38b50f1609b7b::1780271217::res://.godot/exported/133200997/export-4a24720ee5e787dbe30abc634fa3679d-Main.scn
+res://scenes/chambers/Cage.tscn::9571b23c54fdd3fed0e71dcabb434e12::1780271531::res://.godot/exported/133200997/export-bbd0010f644f9d2485e564d1d07fc13a-Cage.scn
+res://scenes/chambers/DissolutionChamber.tscn::674da5f3fe804b1ac3ff694f006ebd87::1780203679::res://.godot/exported/133200997/export-b06e945d05618f311f45e05235bdcf0f-DissolutionChamber.scn
+res://scenes/chambers/EngineRoom.tscn::215515db8cb6f9546209ce08c0729f94::1780199461::res://.godot/exported/133200997/export-91e74cac2ec1e6e97c914c35f1ae2560-EngineRoom.scn
+res://scenes/chambers/Garden.tscn::61ed8574536b935ed4cb8ad2ba7cb2f0::1780203600::res://.godot/exported/133200997/export-c5031b4db32a7d9527104754b53779c0-Garden.scn
+res://scenes/chambers/GuestQuarters.tscn::fb9951b46013978d7ffc05e236654122::1780199521::res://.godot/exported/133200997/export-2e778eaedb69f6848455283caf606376-GuestQuarters.scn
+res://scenes/chambers/Observatory.tscn::5688a1b7e0ff69b3acbaff4f2a0215ee::1780199487::res://.godot/exported/133200997/export-d58e3dcba0388b9b40d5d1d15b685e40-Observatory.scn
+res://scenes/chambers/WritingRoom.tscn::8bde429fa82175fa029b5fa37ded6373::1780203448::res://.godot/exported/133200997/export-06f640d3712c5e23f45d903adea8ec5a-WritingRoom.scn
+res://scenes/ClickableObject.tscn::e211ea6e721bcecb3035f8a70b693193::1780203514::res://.godot/exported/133200997/export-48e57983f05d250ad1c58e56262ee639-ClickableObject.scn
+res://scenes/transitions/DissolutionEffect.tscn::f2a2013faa0c8a212f6ca7a04777dc6c::1780271274::res://.godot/exported/133200997/export-a4f6de8879621b8fa7a719cc0139dd5f-DissolutionEffect.scn

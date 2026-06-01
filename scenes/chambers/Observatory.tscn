@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://observatory_001"]
+
+[ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/observatory.png" id="2_observatory_bg"]
+
+[sub_resource type="RectangleShape2D" id="Rect_EngineRoom"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_GuestQuarters"]
+size = Vector2(200, 200)
+
+[node name="Observatory" type="Node2D"]
+script = ExtResource("1_chamber_base")
+chamber_id = "observatory"
+chamber_name = "The Observatory"
+chamber_description = "A starfield dome, telescope pointing at void. Where Kira watches and accepts loneliness."
+aspect_hint = "Witness"
+background_texture = ExtResource("2_observatory_bg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_observatory_bg")
+
+[node name="Zone_EngineRoom" type="Area2D" parent="."]
+position = Vector2(300, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_EngineRoom"]
+shape = SubResource("Rect_EngineRoom")
+
+[node name="Zone_GuestQuarters" type="Area2D" parent="."]
+position = Vector2(1620, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_GuestQuarters"]
+shape = SubResource("Rect_GuestQuarters")

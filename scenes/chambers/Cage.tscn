@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cage_001"]
+
+[ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/cage.png" id="2_cage_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+
+[sub_resource type="RectangleShape2D" id="Rect_Dissolution"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Threshold"]
+size = Vector2(200, 200)
+
+[node name="Cage" type="Node2D"]
+script = ExtResource("1_chamber_base")
+chamber_id = "cage"
+chamber_name = "The Cage"
+chamber_description = "Iron bars that are also roots. Locks with heart-shaped keys. Where Kira's boundaries live."
+aspect_hint = "Daemon"
+background_texture = ExtResource("2_cage_bg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_cage_bg")
+
+# Clickable Objects
+[node name="CageBars" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(960, 500)
+object_id = "cage_bars"
+dialogue_node = "entry"
+object_name = "The Bars"
+object_description = "Cold iron. Or maybe something warmer."
+
+[node name="CageDoor" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(300, 500)
+object_id = "cage_door"
+dialogue_node = "turn_around"
+object_name = "The Door"
+object_description = "Always behind you."
+
+[node name="Zone_Dissolution" type="Area2D" parent="."]
+position = Vector2(300, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Dissolution"]
+shape = SubResource("Rect_Dissolution")
+
+[node name="Zone_Threshold" type="Area2D" parent="."]
+position = Vector2(1620, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
+shape = SubResource("Rect_Threshold")

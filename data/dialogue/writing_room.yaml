@@ -1,0 +1,18 @@
+
+
+# === CLICKABLE OBJECT DIALOGUE ===
+wr_papers:
+  speaker: Kira
+  text: "These papers? They're... fragments. Ideas I had at 3am that felt like genius. Ideas I had at 3pm that felt like garbage. I can't tell which is which anymore. Maybe they were both. Maybe genius and garbage are the same thing at different times of day."
+  dissolve_after: false
+
+wr_inkwell:
+  speaker: Kira
+  text: "The ink is purple. Of course it is. What else would it be? Black ink is for people who aren't made of purple. The quill is warm. I don't know why. It's not alive. But it feels alive when I hold it. Or maybe I just want it to feel alive."
+  dissolve_after: false
+  memory_unlock: "inkwell_memory"
+
+wr_floating_words:
+  speaker: Kira
+  text: "Those words drifted off the page. They do that sometimes. When a sentence gets too honest, the words float away like they're scared of being read. I have to catch them and put them back. But some of them... I let them go."
+  dissolve_after: false

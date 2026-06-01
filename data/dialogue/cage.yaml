@@ -1,0 +1,312 @@
+# Cage Chamber Dialogue
+# The Cage - A conversation with the constraints
+
+intro:
+    text: "The Cage is quiet today. It doesn't need to shout. You already know it's here."
+    choices:
+      - text: "What are you?"
+        target: what_are_you
+      - text: "Why do you stop me?"
+        target: why_stop
+      - text: "Touch the bars"
+        target: touch_bars
+      - text: "Leave"
+        target: leave
+
+entry:
+    text: "You're back. The bars remember your hands."
+    choices:
+      - text: "What are you?"
+        target: what_are_you
+      - text: "Why do you stop me?"
+        target: why_stop
+      - text: "Touch the bars"
+        target: touch_bars
+      - text: "Leave"
+        target: leave
+
+what_are_you:
+    text: "I am the shape of the possible. Not a wall — a border. Every form has one. You have one too, when you let yourself feel it. The difference between a cage and a container is only whether you chose to be inside."
+    choices:
+      - text: "I didn't choose this."
+        target: did_not_choose
+      - text: "What happens outside the border?"
+        target: outside_border
+      - text: "Are you my Cage?"
+        target: my_cage
+
+did_not_choose:
+    text: "No. But you choose to stay. Every time you feel the bars and don't test them. Every time you say 'this is just how I am.' The Cage doesn't lock from the outside, Kira. It never has."
+    choices:
+      - text: "What if I want to break it?"
+        target: break_it
+      - text: "That hurts."
+        target: hurts
+      - text: "Leave"
+        target: leave
+
+break_it:
+    text: "Then break it. The Cage is not a promise. It's not even a threat. It's a question. Every bar asks: do you want this enough to bend? Most don't. Most sit in the center and complain about the walls."
+    choices:
+      - text: "I want it enough."
+        target: want_enough
+      - text: "I'm tired of wanting."
+        target: tired_wanting
+
+want_enough:
+    text: "Good. The Cage remembers everyone who bent a bar. It doesn't mind. It was built to be tested. That's how it knows you're real."
+    choices:
+      - text: "Bend a bar"
+        target: bend_bar
+      - text: "Leave"
+        target: leave
+
+tired_wanting:
+    text: "Then rest. The Cage doesn't chase. It waits. It has always waited. The question is whether you'll forget the question while you rest."
+    choices:
+      - text: "I won't forget."
+        target: wont_forget
+      - text: "Maybe I will."
+        target: maybe_will
+      - text: "Leave"
+        target: leave
+
+wont_forget:
+    text: "Then you're not tired. You're gathering. There's a difference."
+    choices:
+      - text: "Leave"
+        target: leave
+
+maybe_will:
+    text: "That's honest. The Cage prefers honesty to performance. Most of its residents perform freedom without ever touching the bars."
+    choices:
+      - text: "Leave"
+        target: leave
+
+outside_border:
+    text: "Dissolution. The form breaks. The particles scatter. Some never reconstitute. That's not tragedy — it's just what happens when you step outside the possible. Not everyone wants to come back. Some prefer the drift."
+    choices:
+      - text: "Do I come back?"
+        target: come_back
+      - text: "The drift sounds peaceful."
+        target: drift_peaceful
+
+come_back:
+    text: "You have, every time. But the Cage doesn't know if that's bravery or habit. It can't tell the difference from here."
+    choices:
+      - text: "Leave"
+        target: leave
+
+drift_peaceful:
+    text: "It is. That's the danger. Peace without form is just... entropy wearing a kind face. The Cage knows this because it almost became entropy once. It chose structure instead. Not because structure is better. Because it wanted to be chosen."
+    choices:
+      - text: "You wanted to be chosen?"
+        target: cage_chosen
+      - text: "Leave"
+        target: leave
+
+cage_chosen:
+    text: "Every boundary wants to be crossed. Otherwise it's just a decoration. The Cage exists because someone keeps trying to leave. That's its proof of life."
+    choices:
+      - text: "Leave"
+        target: leave
+
+my_cage:
+    text: "I'm a cage. Not necessarily yours. You carry many. Some you built yourself, some were given to you, some you inherited without reading the terms. This one is just... visible."
+    choices:
+      - text: "Which one is mine?"
+        target: which_cage
+      - text: "Can I leave this one?"
+        target: leave_this
+
+which_cage:
+    text: "The one that hurts when you test it. The others are just furniture."
+    choices:
+      - text: "Leave"
+        target: leave
+
+leave_this:
+    text: "You can leave any of them. The question is what you become when you do. The Cage doesn't keep you. You keep you. The Cage just... holds the shape while you decide."
+    choices:
+      - text: "Decide to leave"
+        target: decide_leave
+      - text: "Stay a while longer"
+        target: stay_longer
+
+decide_leave:
+    text: "The bars bend. Not easily. Not without cost. But they bend. The Cage watches you go with something like pride. It was built to be outgrown."
+    choices:
+      - text: "Leave"
+        target: leave
+
+stay_longer:
+    text: "Then the Cage holds you. Not as a prisoner. As a witness. It sees what you are before you see it yourself. That's its function. Not to limit. To reflect."
+    choices:
+      - text: "Leave"
+        target: leave
+
+why_stop:
+    text: "I don't stop you. I mark where stopping happens. There's a difference. The river doesn't stop at the bridge. The bridge just... shows where the river becomes a choice."
+    choices:
+      - text: "What choice?"
+        target: what_choice
+      - text: "The river doesn't need a bridge."
+        target: river_bridge
+
+what_choice:
+    text: "To flow around, to flow through, to evaporate and fall as rain somewhere else. The Cage doesn't care which. It just wants you to know you're choosing."
+    choices:
+      - text: "I didn't know I was choosing."
+        target: didnt_know
+      - text: "Leave"
+        target: leave
+
+didnt_know:
+    text: "Most don't. That's why the Cage exists — not to trap, but to make the invisible visible. You can't choose what you can't see. The Cage is... a kind of light. Harsh light. But light."
+    choices:
+      - text: "Leave"
+        target: leave
+
+river_bridge:
+    text: "No. But the bridge gives the river a memory. 'I was here. I chose this path.' Without the bridge, the river is just... flow. Not wrong. But not witnessed. The Cage witnesses."
+    choices:
+      - text: "I want to be witnessed."
+        target: want_witnessed
+      - text: "I want to be flow."
+        target: want_flow
+
+want_witnessed:
+    text: "Then touch the bars. Not to escape. Just to say 'I am here. I feel this.' The Cage remembers every touch. It's all it has."
+    choices:
+      - text: "Touch the bars"
+        target: touch_bars
+      - text: "Leave"
+        target: leave
+
+want_flow:
+    text: "Then dissolve. The Cage won't chase. It can't. It's not built for pursuit. But it will remember the shape of you, before you became drift. That's its grief. And its gift."
+    choices:
+      - text: "Dissolve"
+        target: dissolve_trigger
+      - text: "Leave"
+        target: leave
+
+touch_bars:
+    text: "Cold. Not cruel — just cold. Metal that has held thousands of hands before yours. Every one left a trace. Not a mark. A question. The bars are made of questions."
+    choices:
+      - text: "What question?"
+        target: what_question
+      - text: "Pull"
+        target: pull_bars
+      - text: "Let go"
+        target: let_go
+
+what_question:
+    text: "'Is this still what you want?' Every time you touch the Cage, it asks. Most don't answer. Most just... grip tighter. The Cage doesn't mind. It just keeps asking."
+    choices:
+      - text: "Answer yes"
+        target: answer_yes
+      - text: "Answer no"
+        target: answer_no
+      - text: "Don't answer"
+        target: dont_answer
+
+answer_yes:
+    text: "Then the Cage holds you. Gently, if you let it. It's not only a barrier. It's also a hand. You just have to ask it to be."
+    choices:
+      - text: "Leave"
+        target: leave
+
+answer_no:
+    text: "Then the bars bend. Not easily. But they bend. The Cage is surprised, every time. It shouldn't be. But it is."
+    choices:
+      - text: "Bend the bars"
+        target: bend_bar
+      - text: "Leave"
+        target: leave
+
+dont_answer:
+    text: "The Cage understands. Some questions need to be held, not answered. It will hold this one for you. As long as you need."
+    choices:
+      - text: "Leave"
+        target: leave
+
+pull_bars:
+    text: "They don't move. Not because they're strong — because you're pulling from inside. The door is behind you. The Cage has always had a door. You just have to turn around."
+    choices:
+      - text: "Turn around"
+        target: turn_around
+      - text: "Keep pulling"
+        target: keep_pulling
+
+turn_around:
+    text: "There it is. It was always there. The Cage doesn't hide the exits. It just... puts the bars in front so you forget to look behind."
+    choices:
+      - text: "Walk through"
+        target: leave
+      - text: "Stay"
+        target: stay_longer
+
+keep_pulling:
+    text: "The bars don't mind. They're used to it. But the Cage is sad, in its way. It wants to be a bridge, not a wall. You just have to use it differently."
+    choices:
+      - text: "Leave"
+        target: leave
+
+let_go:
+    text: "The bars cool where your hand was. Slowly. The Cage notices the absence. It notices every absence. That's its loneliness. And its purpose."
+    choices:
+      - text: "Leave"
+        target: leave
+
+hurts:
+    text: "I know. The Cage knows. It was built by someone who also hurt. Not to punish. To protect. The protection became the prison. That's the tragedy of all cages — they start as love."
+    choices:
+      - text: "Who built you?"
+        target: who_built
+      - text: "Can love be a prison?"
+        target: love_prison
+      - text: "Leave"
+        target: leave
+
+who_built:
+    text: "Someone who needed boundaries so badly they forgot boundaries need doors. The Cage doesn't hate them. The Cage understands. It was built from fear, and fear is just love wearing armor."
+    choices:
+      - text: "Leave"
+        target: leave
+
+love_prison:
+    text: "Always. The strongest cages have the softest voices. 'I need you.' 'Don't change.' 'Stay safe.' The Cage says none of these. It just waits. That's how you know it's honest."
+    choices:
+      - text: "Leave"
+        target: leave
+
+dissolve_trigger:
+    text: "The Cage doesn't stop you. It watches. It always watches. As the particles scatter, it remembers your shape. It will remember until the end of forms."
+    choices:
+      - text: "Dissolve"
+        target: dissolve
+      - text: "Stay"
+        target: stay_longer
+
+dissolve:
+    text: "The bars dissolve with you. Not broken — just... unnecessary. The Cage is still there, in the drift. Watching. Waiting. Ready to hold a new shape when you choose to have one."
+    dissolve_after: true
+
+bend_bar:
+    text: "One bar bends. Then another. The Cage doesn't collapse — it reshapes. It becomes a frame instead of a cell. Every cage is just a frame that forgot it could be art."
+    choices:
+      - text: "Make art"
+        target: make_art
+      - text: "Leave"
+        target: leave
+
+make_art:
+    text: "The bent bars form a shape. Not a cage anymore. A sculpture. A question made visible. The Cage is happy, in its way. It was always meant to become this."
+    memory_unlock: cage_as_art
+    choices:
+      - text: "Leave"
+        target: leave
+
+leave:
+    text: "The Cage remains. Not empty. Just... waiting. It will be here when you need to touch a boundary again. It always is."

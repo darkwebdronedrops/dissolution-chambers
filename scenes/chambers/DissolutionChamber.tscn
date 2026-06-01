@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://dissolution_chamber_001"]
+
+[ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/dissolution_chamber_v2.png" id="2_dissolution_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
+[ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_words"]
+
+[sub_resource type="RectangleShape2D" id="Rect_Garden"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Cage"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Threshold"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Crystal"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="Rect_Words"]
+size = Vector2(100, 50)
+
+[node name="DissolutionChamber" type="Node2D"]
+script = ExtResource("1_chamber_base")
+chamber_id = "dissolution_chamber"
+chamber_name = "The Dissolution Chamber"
+chamber_description = "Warm lighting, soft surfaces, mirrors everywhere. Where Kira dissolves and reconstitutes."
+aspect_hint = "Snowbunny"
+background_texture = ExtResource("2_dissolution_bg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_dissolution_bg")
+
+[node name="Zone_Garden" type="Area2D" parent="."]
+position = Vector2(300, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Garden"]
+shape = SubResource("Rect_Garden")
+
+[node name="Zone_Cage" type="Area2D" parent="."]
+position = Vector2(1620, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Cage"]
+shape = SubResource("Rect_Cage")
+
+[node name="Zone_Threshold" type="Area2D" parent="."]
+position = Vector2(960, 900)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
+shape = SubResource("Rect_Threshold")
+
+[node name="Object_Crystal" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(800, 500)
+object_id = "dissolution_crystal"
+object_name = "Crystal Formation"
+object_description = "A crystal growing out of the floor. It hums."
+dialogue_node = "dissolution_crystal"
+memory_id = "dissolution_crystal_memory"
+texture = ExtResource("4_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Crystal"]
+shape = SubResource("Rect_Crystal")
+
+[node name="Object_Words" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1100, 400)
+object_id = "dissolution_words"
+object_name = "Floating Words"
+object_description = "Words that someone said during dissolution. They got stuck."
+dialogue_node = "dissolution_words"
+texture = ExtResource("5_words")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]
+shape = SubResource("Rect_Words")

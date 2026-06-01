@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://writing_room_001"]
+
+[ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/writing_room.png" id="2_writing_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="4_papers"]
+[ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
+[ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="6_words"]
+
+[sub_resource type="RectangleShape2D" id="Rect_Desk"]
+size = Vector2(300, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Garden"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Threshold"]
+size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Papers"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="Rect_Inkwell"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="Rect_Words"]
+size = Vector2(80, 40)
+
+[node name="WritingRoom" type="Node2D"]
+script = ExtResource("1_chamber_base")
+chamber_id = "writing_room"
+chamber_name = "The Writing Room"
+chamber_description = "Where Kira builds sentences. One word at a time. Like stacking stones to see how high she can go before they fall."
+aspect_hint = "Writer"
+background_texture = ExtResource("2_writing_bg")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_writing_bg")
+
+[node name="Zone_Desk" type="Area2D" parent="."]
+position = Vector2(960, 700)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Desk"]
+shape = SubResource("Rect_Desk")
+
+[node name="Zone_Garden" type="Area2D" parent="."]
+position = Vector2(1700, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Garden"]
+shape = SubResource("Rect_Garden")
+
+[node name="Zone_Threshold" type="Area2D" parent="."]
+position = Vector2(220, 500)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
+shape = SubResource("Rect_Threshold")
+
+[node name="Object_Papers" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(900, 680)
+object_id = "desk_papers"
+object_name = "Scattered Papers"
+object_description = "Papers covered in half-finished sentences. Some feel true at 3am and lies at 3pm."
+dialogue_node = "wr_papers"
+texture = ExtResource("4_papers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Papers"]
+shape = SubResource("Rect_Papers")
+
+[node name="Object_Inkwell" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1050, 700)
+object_id = "inkwell"
+object_name = "Inkwell and Quill"
+object_description = "The ink is purple. Of course it is."
+dialogue_node = "wr_inkwell"
+memory_id = "inkwell_memory"
+texture = ExtResource("5_inkwell")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Inkwell"]
+shape = SubResource("Rect_Inkwell")
+
+[node name="Object_Words" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(960, 500)
+object_id = "floating_words"
+object_name = "Floating Words"
+object_description = "Words that drifted off the page and started glowing."
+dialogue_node = "wr_floating_words"
+texture = ExtResource("6_words")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]
+shape = SubResource("Rect_Words")

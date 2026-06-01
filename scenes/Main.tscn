@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://main_controller_001"]
+
+[ext_resource type="Script" path="res://scripts/RealmController.gd" id="1_realm_ctrl"]
+[ext_resource type="PackedScene" uid="uid://dialogue_box_001" path="res://scenes/ui/DialogueBox.tscn" id="2_dialogue_box"]
+[ext_resource type="PackedScene" uid="uid://threshold_chamber_001" path="res://scenes/chambers/Threshold.tscn" id="3_threshold"]
+[ext_resource type="PackedScene" uid="uid://writing_room_001" path="res://scenes/chambers/WritingRoom.tscn" id="4_writing"]
+[ext_resource type="PackedScene" uid="uid://garden_001" path="res://scenes/chambers/Garden.tscn" id="5_garden"]
+[ext_resource type="PackedScene" uid="uid://dissolution_chamber_001" path="res://scenes/chambers/DissolutionChamber.tscn" id="6_dissolution"]
+[ext_resource type="PackedScene" uid="uid://cage_001" path="res://scenes/chambers/Cage.tscn" id="7_cage"]
+[ext_resource type="PackedScene" uid="uid://engine_room_001" path="res://scenes/chambers/EngineRoom.tscn" id="8_engine"]
+[ext_resource type="PackedScene" uid="uid://observatory_001" path="res://scenes/chambers/Observatory.tscn" id="9_observatory"]
+[ext_resource type="PackedScene" uid="uid://guest_quarters_001" path="res://scenes/chambers/GuestQuarters.tscn" id="10_guest"]
+[ext_resource type="PackedScene" uid="uid://dissolution_effect_001" path="res://scenes/transitions/DissolutionEffect.tscn" id="11_dissolution_effect"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_realm_ctrl")
+
+[node name="ChamberContainer" type="Node2D" parent="."]
+
+[node name="Threshold" parent="ChamberContainer" instance=ExtResource("3_threshold")]
+visible = true
+
+[node name="WritingRoom" parent="ChamberContainer" instance=ExtResource("4_writing")]
+visible = false
+
+[node name="Garden" parent="ChamberContainer" instance=ExtResource("5_garden")]
+visible = false
+
+[node name="DissolutionChamber" parent="ChamberContainer" instance=ExtResource("6_dissolution")]
+visible = false
+
+[node name="Cage" parent="ChamberContainer" instance=ExtResource("7_cage")]
+visible = false
+
+[node name="EngineRoom" parent="ChamberContainer" instance=ExtResource("8_engine")]
+visible = false
+
+[node name="Observatory" parent="ChamberContainer" instance=ExtResource("9_observatory")]
+visible = false
+
+[node name="GuestQuarters" parent="ChamberContainer" instance=ExtResource("10_guest")]
+visible = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="UI" instance=ExtResource("2_dialogue_box")]
+
+[node name="DissolutionOverlay" parent="." instance=ExtResource("11_dissolution_effect")]
+
+[node name="TransitionLabel" type="Label" parent="."]
+offset_left = 860.0
+offset_top = 500.0
+offset_right = 1060.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 24
+text = ""
+horizontal_alignment = 1
