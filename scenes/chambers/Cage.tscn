@@ -1,14 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cage_001"]
+[gd_scene load_steps=7 format=3 uid="uid://cage_001"]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/cage.png" id="2_cage_bg"]
 [ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
+[ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Dissolution"]
 size = Vector2(200, 200)
 
 [sub_resource type="RectangleShape2D" id="Rect_Threshold"]
 size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Bars"]
+size = Vector2(300, 250)
+
+[sub_resource type="RectangleShape2D" id="Rect_Door"]
+size = Vector2(100, 180)
+
+[sub_resource type="RectangleShape2D" id="Rect_Lock"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="Rect_Scratches"]
+size = Vector2(150, 40)
 
 [node name="Cage" type="Node2D"]
 script = ExtResource("1_chamber_base")
@@ -23,21 +37,7 @@ position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_cage_bg")
 
-# Clickable Objects
-[node name="CageBars" parent="." instance=ExtResource("3_clickable")]
-position = Vector2(960, 500)
-object_id = "cage_bars"
-dialogue_node = "entry"
-object_name = "The Bars"
-object_description = "Cold iron. Or maybe something warmer."
-
-[node name="CageDoor" parent="." instance=ExtResource("3_clickable")]
-position = Vector2(300, 500)
-object_id = "cage_door"
-dialogue_node = "turn_around"
-object_name = "The Door"
-object_description = "Always behind you."
-
+# Exit Zones
 [node name="Zone_Dissolution" type="Area2D" parent="."]
 position = Vector2(300, 500)
 
@@ -49,3 +49,48 @@ position = Vector2(1620, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
 shape = SubResource("Rect_Threshold")
+
+# Clickable Objects
+[node name="Object_CageBars" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(960, 500)
+object_id = "cage_bars"
+object_name = "The Bars"
+object_description = "Cold iron. Or maybe something warmer. Every bar is a question. Every touch is an answer."
+dialogue_node = "cage_bars"
+texture = ExtResource("4_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageBars"]
+shape = SubResource("Rect_Bars")
+
+[node name="Object_CageDoor" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(400, 500)
+object_id = "cage_door"
+object_name = "The Door"
+object_description = "Always behind you. Always open. The Cage doesn't keep you. You keep you."
+dialogue_node = "cage_door"
+texture = ExtResource("5_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageDoor"]
+shape = SubResource("Rect_Door")
+
+[node name="Object_Lock" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(960, 380)
+object_id = "cage_lock"
+object_name = "Heart-Shaped Lock"
+object_description = "A lock in the shape of a heart. It's not locked. It was never locked. The key is hanging next to it. The key is also a heart."
+dialogue_node = "cage_lock"
+texture = ExtResource("5_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Lock"]
+shape = SubResource("Rect_Lock")
+
+[node name="Object_Scratches" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(700, 750)
+object_id = "cage_scratches"
+object_name = "Scratches on the Floor"
+object_description = "Marks in the stone. Someone tried to dig their way out. Or in. The direction doesn't matter. What matters is the trying."
+dialogue_node = "cage_scratches"
+texture = ExtResource("4_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Scratches"]
+shape = SubResource("Rect_Scratches")

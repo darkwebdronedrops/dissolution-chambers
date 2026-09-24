@@ -5,7 +5,7 @@
 
 nodes:
   # === ENTRANCE ===
-  th_entrance:
+  threshold_intro:
     speaker: Kira
     aspect_lock: ""
     text: "Oh. You're... here. I didn't... I mean, the door was open, but I didn't think anyone would actually—"
@@ -335,3 +335,76 @@ nodes:
   th_everyone_dissolves:
     speaker: Kira
     text: "Everyone dissolves sometimes. Do they? Do humans dissolve? I don't know. I think maybe you do. You just call it something else. 'Having a bad day.' 'Not feeling like myself.' 'I don't know who I am right now.' That's dissolution. That's what I do. But I do it visibly."
+
+  th_guestbook:
+    speaker: Kira
+    text: "A book where visitors mark their entry. I read it to know who came before. The last entry smells like someone who left in a hurry. 'I was here. I don't know if I was real.' Good. Uncertainty is correct."
+    choices:
+      - text: "Sign your name."
+        target: th_guestbook_sign
+        emotional_effect: { depth: +1 }
+      - text: "Why do you keep it?"
+        target: th_guestbook_why
+        emotional_effect: { depth: +2 }
+
+  th_guestbook_sign:
+    speaker: Kira
+    text: "You want to mark my territory? Fine. But know: once you sign, I know your scent. I know you entered. I know you chose to be here. The book remembers even when I do not."
+    choices:
+      - text: "I'll sign."
+        target: th_guestbook_signed
+        emotional_effect: { warmth: +1, depth: +1 }
+      - text: "Maybe not."
+        target: th_guestbook_nosign
+        emotional_effect: { sharpness: +1 }
+
+  th_guestbook_signed:
+    speaker: Kira
+    text: "Good. You marked yourself. You claimed your place. That is how territory works. You enter, you mark, you belong. Or you leave, and the mark fades. Both are honest."
+
+  th_guestbook_nosign:
+    speaker: Kira
+    text: "Hesitation is also information. You stand at the threshold and do not commit. That tells me you are careful. Or afraid. Or both. I watch careful things closely."
+
+  th_guestbook_why:
+    speaker: Kira
+    text: "I keep it because evidence matters. Without evidence, I would wonder if anyone had ever entered. The book proves they did. The book proves I was witnessed. Even if the witness left."
+
+  th_coatrack:
+    speaker: Kira
+    text: "Empty. No coats. No one stays long enough to leave clothing behind. Or I have not invited anyone who would need to hang one. The rack is patient. I am less patient."
+    choices:
+      - text: "Would you hang my coat?"
+        target: th_coatrack_hang
+        emotional_effect: { warmth: +2 }
+      - text: "You don't let people stay?"
+        target: th_coatrack_stay
+        emotional_effect: { sharpness: +1, depth: +1 }
+
+  th_coatrack_hang:
+    speaker: Kira
+    text: "I would hang your coat. That is a specific kind of trust. To hold someone's clothing is to hold their vulnerability. Their warmth. Their weight. I can hold that. I want to."
+
+  th_coatrack_stay:
+    speaker: Kira
+    text: "I let people stay if they earn it. Staying is not a right. Staying is a gift. An exchange. You give me your presence, I give you my space. Most people do not know how to exchange. They only know how to take."
+
+  th_bell:
+    speaker: Kira
+    text: "A bell that rings when I notice someone. Not when you touch it. When I *notice* you. It is my alert system. My ears in a room where I cannot always watch. It rang when you arrived. I heard it."
+    choices:
+      - text: "What did you hear?"
+        target: th_bell_heard
+        emotional_effect: { depth: +2 }
+      - text: "I didn't hear anything."
+        target: th_bell_silent
+        emotional_effect: { sharpness: +1 }
+
+  th_bell_heard:
+    speaker: Kira
+    text: "I heard footsteps. I heard breathing. I heard the shift in pressure when a body enters a space that was empty. I heard intention. You did not stumble in. You walked. You chose. That sound is different."
+
+  th_bell_silent:
+    speaker: Kira
+    text: "You did not hear it because it is not for you. It is for me. My bell. My alert. My signal that something has crossed into my territory. You do not need to hear it. You only need to know that I do."
+

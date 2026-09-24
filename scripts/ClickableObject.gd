@@ -51,6 +51,16 @@ func _on_mouse_exited():
 
 func _interact():
 	"""Handle interaction."""
+	# Check for memory fragment first
+	var fragment = MemoryFragmentDatabase.get_fragment_for_object(object_id)
+	if fragment and fragment.can_trigger():
+		# Play memory fragment
+		fragment.mark_heard()
+		DialogueSystem.dialogue_line.emit(fragment.text, "Kira", "")
+		DialogueSystem.dialogue_ended.emit()
+		print("ClickableObject: Memory fragment played — %s" % fragment.fragment_id)
+		return
+	
 	# Apply emotional effects
 	if not emotional_effect.is_empty():
 		EmotionalState.apply_choice_effect(emotional_effect)

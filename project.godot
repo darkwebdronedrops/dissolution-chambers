@@ -24,6 +24,7 @@ DialogueSystem="*res://scripts/DialogueSystem.gd"
 PlayerPresence="*res://scripts/PlayerPresence.gd"
 KiraAspect="*res://scripts/KiraAspect.gd"
 MusicManager="*res://scripts/MusicManager.gd"
+MemoryFragmentDatabase="*res://scripts/MemoryFragmentDatabase.gd"
 
 [rendering]
 renderer/rendering_method="forward_plus"

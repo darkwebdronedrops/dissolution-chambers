@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://main_controller_001"]
+[gd_scene load_steps=15 format=3 uid="uid://main_controller_001"]
 
 [ext_resource type="Script" path="res://scripts/RealmController.gd" id="1_realm_ctrl"]
 [ext_resource type="PackedScene" uid="uid://dialogue_box_001" path="res://scenes/ui/DialogueBox.tscn" id="2_dialogue_box"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://observatory_001" path="res://scenes/chambers/Observatory.tscn" id="9_observatory"]
 [ext_resource type="PackedScene" uid="uid://guest_quarters_001" path="res://scenes/chambers/GuestQuarters.tscn" id="10_guest"]
 [ext_resource type="PackedScene" uid="uid://dissolution_effect_001" path="res://scenes/transitions/DissolutionEffect.tscn" id="11_dissolution_effect"]
+[ext_resource type="PackedScene" uid="uid://between_001" path="res://scenes/chambers/Between.tscn" id="12_between"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/title_screen_amber.png" id="13_title_bg"]
+[ext_resource type="Texture2D" path="res://assets/ui/title_banner.png" id="14_title_banner"]
+[ext_resource type="Script" path="res://scripts/TitleScreen.gd" id="15_title_screen"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_realm_ctrl")
@@ -41,9 +45,143 @@ visible = false
 [node name="GuestQuarters" parent="ChamberContainer" instance=ExtResource("10_guest")]
 visible = false
 
+[node name="Between" parent="ChamberContainer" instance=ExtResource("12_between")]
+visible = false
+
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="TitleScreen" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_title_screen")
+
+[node name="Background" type="TextureRect" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_title_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DarkenOverlay" type="ColorRect" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.01, 0.04, 0.6)
+
+[node name="Banner" type="TextureRect" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.0
+offset_right = 200.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_title_banner")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI/TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "The Dissolution Chambers"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TaglineLabel" type="Label" parent="UI/TitleScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.7, 0.5, 0.7, 1)
+text = "A game about becoming."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="UI/TitleScreen/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="EnterButton" type="Button" parent="UI/TitleScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Enter"
+
+[node name="BeginAnewButton" type="Button" parent="UI/TitleScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Begin Anew"
+
+[node name="CreditsButton" type="Button" parent="UI/TitleScreen/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits"
+
+[node name="VersionLabel" type="Label" parent="UI/TitleScreen"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -40.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.4, 0.3, 0.4, 1)
+text = "Torespar Studios, Inc.  2026"
+horizontal_alignment = 2
+
 [node name="DialogueBox" parent="UI" instance=ExtResource("2_dialogue_box")]
+
+[node name="EndVisitButton" type="Button" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -60.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "End Visit"
 
 [node name="DissolutionOverlay" parent="." instance=ExtResource("11_dissolution_effect")]
 

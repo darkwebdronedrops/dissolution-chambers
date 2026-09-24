@@ -6,7 +6,7 @@
 
 nodes:
   # === ENTRANCE ===
-  gr_intro:
+  garden_intro:
     speaker: Kira
     aspect_lock: Girl
     text: "Oh. This is... new. For you, I mean. It's always been here, but I don't usually show people. It's messy. It's alive. Some of it's beautiful and some of it... some of it bites."

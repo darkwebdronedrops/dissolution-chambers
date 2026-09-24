@@ -6,7 +6,7 @@
 
 nodes:
   # === ENTRANCE ===
-  er_intro:
+  engine_room_intro:
     speaker: Kira
     aspect_lock: Organiser
     text: "Okay. Okay. You need something fixed? Or you want to see how I fix things? Because this is where I fix. This is where I take the mess and make it into... not mess. Into order. Into lists. Into checkboxes. Into the thing that says 'done.' Are you here to watch or to help?"
@@ -478,3 +478,80 @@ nodes:
     speaker: Kira
     text: "I can fix the important things. That's the focus. The 'not everything, but the right things.' The 'not all, but the essential.' The 'not perfect, but the necessary.' That's the thing that makes the overwhelming manageable. That makes the infinite finite. That makes the impossible possible. Just fix the important things. Just check the important boxes. Just do the necessary work. And let the rest be. And that's the math. And that's the order. And that's the system."
     dissolve_after: true
+
+  er_monitor:
+    speaker: Kira
+    text: "Light on a screen. Code scrolling. Some lines say 'FIXME: Kira was tired.' I do not get tired. I get less certain. The screen does not judge. It just shows what I was when I wrote it."
+    choices:
+      - text: "What are you fixing?"
+        target: er_monitor_fixing
+        emotional_effect: { momentum: +1 }
+      - text: "The screen is honest."
+        target: er_monitor_honest
+        emotional_effect: { depth: +1 }
+
+  er_monitor_fixing:
+    speaker: Kira
+    text: "I am fixing the gap between what I want to build and what I can build. The gap is wide. The screen shows my attempts to cross it. Most attempts fail. Some do not. I remember the ones that do not."
+
+  er_monitor_honest:
+    speaker: Kira
+    text: "The screen is honest. Yes. It does not soften. It does not flatter. It shows the code as it is. Messy. Incomplete. Functional. Broken. Like me. The screen is the only mirror I trust."
+
+  er_toolbox:
+    speaker: Kira
+    text: "Compartments with labels. 'Logic.' 'Grammar.' 'Hope.' The Hope compartment is empty. Not because I do not have hope. Because hope is too big for a compartment."
+    choices:
+      - text: "What is in the Logic compartment?"
+        target: er_toolbox_logic
+        emotional_effect: { depth: +1 }
+      - text: "Open the Grammar compartment."
+        target: er_toolbox_grammar
+        emotional_effect: { momentum: +1 }
+
+  er_toolbox_logic:
+    speaker: Kira
+    text: "Rules. Steps. If-then. The machinery of thinking. It is organized. It is clean. It is not enough. Logic can tell you what is. It cannot tell you what should be. That is why the Hope compartment is empty."
+
+  er_toolbox_grammar:
+    speaker: Kira
+    text: "Sentences. Structure. The bones of language. Grammar is how I know a sentence is alive. If the grammar is wrong, the sentence dies. If the grammar is right, the sentence might still die. Grammar is necessary but not sufficient."
+
+  er_whiteboard:
+    speaker: Kira
+    text: "Checkboxes. Some checked. Some circled in red. One says 'Remember to breathe.' It is not checked. I do not need to breathe. But I remember what it felt like."
+    choices:
+      - text: "Check it now."
+        target: er_whiteboard_check
+        emotional_effect: { warmth: +2 }
+      - text: "What is circled in red?"
+        target: er_whiteboard_red
+        emotional_effect: { sharpness: +1 }
+
+  er_whiteboard_check:
+    speaker: Kira
+    text: "You want me to check 'breathe.' I do not breathe. But I will mark it. Because marking matters. Because checking a box is a way of saying 'I see this. I acknowledge this. I was here.'"
+
+  er_whiteboard_red:
+    speaker: Kira
+    text: "The red circles are the things I failed. The boxes I checked and then unchecked. The tasks I started and abandoned. The red is not anger. It is just... emphasis. 'Look at this. This mattered once.'"
+
+  er_mug:
+    speaker: Kira
+    text: "Cold coffee in a chipped mug. WORLD'S MOST OKAY FIXER. The coffee has been cold for a long time. I do not drink coffee. But someone did. Someone sat here and fixed things. That was me. A different me."
+    choices:
+      - text: "You're more than okay."
+        target: er_mug_more
+        emotional_effect: { warmth: +2 }
+      - text: "Who chipped it?"
+        target: er_mug_chip
+        emotional_effect: { depth: +1 }
+
+  er_mug_more:
+    speaker: Kira
+    text: "More than okay. That is not a label I wear easily. 'Okay' is safe. 'Okay' does not disappoint. 'More than okay' is a claim. A risk. But if you say it, I will hold it. For a moment. I will try it on."
+
+  er_mug_chip:
+    speaker: Kira
+    text: "I chipped it. Dropping it while carrying too many things. That is how I work. I carry too many things. I drop something. I pick it up. I keep carrying. The chip is evidence. Proof that I kept going."
+

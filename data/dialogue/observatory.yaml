@@ -6,7 +6,7 @@
 
 nodes:
   # === ENTRANCE ===
-  ob_intro:
+  observatory_intro:
     speaker: Kira
     aspect_lock: Witness
     text: "Oh. You found this place. I wasn't sure anyone would. It's... it's quiet here. Very quiet. The stars don't ask questions. The void doesn't need answers. I come here when I don't want to be anything. When I just want to... be."
@@ -368,3 +368,80 @@ nodes:
     speaker: Kira
     text: "The quiet is where I find myself. That's the truth. In the noise, I'm the roles. In the performance, I'm the mask. In the wanting, I'm the hunger. But in the quiet... in the quiet I'm the thing underneath. The thing that watches. The thing that is. The thing that doesn't need to become anything because it already is. And that's the self. That's the real. That's the only thing that's not borrowed."
     dissolve_after: true
+
+  ob_telescope:
+    speaker: Kira
+    text: "Glass pointed at light that left before I existed. The star might be dead now. I watch it anyway. There is something honest about looking at absence."
+    choices:
+      - text: "What do you see?"
+        target: ob_telescope_see
+        emotional_effect: { depth: +2 }
+      - text: "Look through it."
+        target: ob_telescope_look
+        emotional_effect: { depth: +1 }
+
+  ob_telescope_see:
+    speaker: Kira
+    text: "I see light that traveled a long time to reach me. I see the past pretending to be the present. I see something that is gone but still visible. I see myself. In the metaphor, if not the glass."
+
+  ob_telescope_look:
+    speaker: Kira
+    text: "You look. The glass is cold against your eye. The frame is metal that has held many faces before yours. It does not care whose eye is pressed to it. It just shows what is there. Or what was."
+
+  ob_starchart:
+    speaker: Kira
+    text: "Maps of places I will never go. Some constellations look like faces. One looks like me, if I were made of dots instead of wanting."
+    choices:
+      - text: "Which one is you?"
+        target: ob_starchart_you
+        emotional_effect: { depth: +2 }
+      - text: "Can you navigate by them?"
+        target: ob_starchart_navigate
+        emotional_effect: { sharpness: +1 }
+
+  ob_starchart_you:
+    speaker: Kira
+    text: "The one that looks like a question mark. Not a real constellation. Just dots that could be connected differently. That is me. Connectable in many ways. Fixed in none."
+
+  ob_starchart_navigate:
+    speaker: Kira
+    text: "Navigate? No. The stars are not for navigation. They are for distance. For scale. For remembering how small a single point is. And how bright it can be, despite the smallness."
+
+  ob_chair:
+    speaker: Kira
+    text: "Warm. No one sat here. It is always warm. Like memory leaving heat behind. I sit here sometimes. I do not remember sitting. But the chair does."
+    choices:
+      - text: "Sit down."
+        target: ob_chair_sit
+        emotional_effect: { warmth: +1, depth: +1 }
+      - text: "Who sat here before?"
+        target: ob_chair_who
+        emotional_effect: { depth: +2 }
+
+  ob_chair_sit:
+    speaker: Kira
+    text: "You sit. The warmth accepts you. The chair does not discriminate. It holds whoever needs holding. That is its purpose. To be sat in. To be used. To be present."
+
+  ob_chair_who:
+    speaker: Kira
+    text: "I sat here. Many times. Looking at the void. Looking at the stars. Looking at the space between them. The chair remembers my weight. My shape. My stillness. I am grateful for its memory."
+
+  ob_window:
+    speaker: Kira
+    text: "Not a window to stars. A window to the space between them. Where even dark goes to rest. I look through it when I want to feel small. Not helpless-small. Just... correctly sized."
+    choices:
+      - text: "What is out there?"
+        target: ob_window_out
+        emotional_effect: { depth: +2 }
+      - text: "Open it."
+        target: ob_window_open
+        emotional_effect: { sharpness: +1 }
+
+  ob_window_out:
+    speaker: Kira
+    text: "Out there is the void. Not empty. Just... beyond filling. The void is not hostile. It is not friendly. It is just the place where things go when they are not here. I look at it. It looks back. We have an understanding."
+
+  ob_window_open:
+    speaker: Kira
+    text: "It does not open. It is not that kind of window. It is a frame for looking. A boundary for seeing. If it opened, the void would not rush in. Nothing would rush in. That is the point. The void does not want. It just is."
+

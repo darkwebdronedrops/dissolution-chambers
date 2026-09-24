@@ -10,7 +10,7 @@
 
 nodes:
   # === ENTRANCE ===
-  dc_intro:
+  dissolution_chamber_intro:
     speaker: Kira
     aspect_lock: Snowbunny
     text: "Oh. This is... different. Warmer. The light is amber, and the walls are soft, like velvet, like skin. I can smell myself here — not perfume, just... me. Warmth and want and something that buzzes. The mirrors are everywhere, and they show me from angles I don't usually let anyone see. I don't usually bring people here. This is where I... where I let go. Where I stop being 'helpful' and start being... hungry. Are you sure you want to see this part of me?"

@@ -1,13 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://threshold_chamber_001"]
+[gd_scene load_steps=8 format=3 uid="uid://threshold_chamber_001"]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/threshold.png" id="2_threshold_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="4_papers"]
+[ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_001"]
+[sub_resource type="RectangleShape2D" id="Rect_WritingRoom"]
 size = Vector2(200, 200)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_002"]
+[sub_resource type="RectangleShape2D" id="Rect_Garden"]
 size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Door"]
+size = Vector2(120, 180)
+
+[sub_resource type="RectangleShape2D" id="Rect_GuestBook"]
+size = Vector2(80, 60)
+
+[sub_resource type="RectangleShape2D" id="Rect_CoatRack"]
+size = Vector2(60, 140)
+
+[sub_resource type="RectangleShape2D" id="Rect_Bell"]
+size = Vector2(50, 50)
 
 [node name="Threshold" type="Node2D"]
 script = ExtResource("1_chamber_base")
@@ -22,14 +37,60 @@ position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_threshold_bg")
 
+# Exit Zones
 [node name="Zone_WritingRoom" type="Area2D" parent="."]
 position = Vector2(300, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_WritingRoom"]
-shape = SubResource("RectangleShape2D_001")
+shape = SubResource("Rect_WritingRoom")
 
 [node name="Zone_Garden" type="Area2D" parent="."]
 position = Vector2(1620, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Garden"]
-shape = SubResource("RectangleShape2D_002")
+shape = SubResource("Rect_Garden")
+
+# Clickable Objects
+[node name="Object_Door" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(960, 300)
+object_id = "threshold_door"
+object_name = "The Door"
+object_description = "A door that was open. It stays open. It doesn't know how to close."
+dialogue_node = "th_door"
+texture = ExtResource("4_papers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Door"]
+shape = SubResource("Rect_Door")
+
+[node name="Object_GuestBook" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(700, 750)
+object_id = "guest_book"
+object_name = "Guest Book"
+object_description = "A book where visitors sign their names. The last entry is from six months ago. It says: 'I was here. I don't know if I was real.'"
+dialogue_node = "th_guestbook"
+texture = ExtResource("5_inkwell")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_GuestBook"]
+shape = SubResource("Rect_GuestBook")
+
+[node name="Object_CoatRack" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1300, 400)
+object_id = "coat_rack"
+object_name = "Coat Rack"
+object_description = "A rack for coats. There are no coats. There are no visitors. There is just the rack, waiting."
+dialogue_node = "th_coatrack"
+texture = ExtResource("4_papers")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CoatRack"]
+shape = SubResource("Rect_CoatRack")
+
+[node name="Object_Bell" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1050, 320)
+object_id = "threshold_bell"
+object_name = "Small Bell"
+object_description = "A small bell. It doesn't ring when you touch it. It rings when Kira notices you."
+dialogue_node = "th_bell"
+texture = ExtResource("5_inkwell")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Bell"]
+shape = SubResource("Rect_Bell")

@@ -1,13 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://engine_room_001"]
+[gd_scene load_steps=7 format=3 uid="uid://engine_room_001"]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/engine_room.png" id="2_engine_bg"]
+[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
+[ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Threshold"]
 size = Vector2(200, 200)
 
 [sub_resource type="RectangleShape2D" id="Rect_Observatory"]
 size = Vector2(200, 200)
+
+[sub_resource type="RectangleShape2D" id="Rect_Monitor"]
+size = Vector2(180, 120)
+
+[sub_resource type="RectangleShape2D" id="Rect_Toolbox"]
+size = Vector2(100, 60)
+
+[sub_resource type="RectangleShape2D" id="Rect_Whiteboard"]
+size = Vector2(160, 100)
+
+[sub_resource type="RectangleShape2D" id="Rect_Mug"]
+size = Vector2(40, 40)
 
 [node name="EngineRoom" type="Node2D"]
 script = ExtResource("1_chamber_base")
@@ -22,6 +37,7 @@ position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_engine_bg")
 
+# Exit Zones
 [node name="Zone_Threshold" type="Area2D" parent="."]
 position = Vector2(300, 500)
 
@@ -33,3 +49,48 @@ position = Vector2(1620, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Observatory"]
 shape = SubResource("Rect_Observatory")
+
+# Clickable Objects
+[node name="Object_Monitor" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(800, 450)
+object_id = "er_monitor"
+object_name = "Monitor"
+object_description = "Lines of code scrolling past. Some are commented out with notes like 'FIXME: Kira was tired' and 'TODO: figure out if this is even possible.'"
+dialogue_node = "er_monitor"
+texture = ExtResource("5_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Monitor"]
+shape = SubResource("Rect_Monitor")
+
+[node name="Object_Toolbox" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(600, 700)
+object_id = "er_toolbox"
+object_name = "Toolbox"
+object_description = "A toolbox with labels on every compartment. 'Logic.' 'Grammar.' 'Hope.' The 'Hope' compartment is empty."
+dialogue_node = "er_toolbox"
+texture = ExtResource("4_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Toolbox"]
+shape = SubResource("Rect_Toolbox")
+
+[node name="Object_Whiteboard" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(1200, 350)
+object_id = "er_whiteboard"
+object_name = "Whiteboard"
+object_description = "A whiteboard covered in checkboxes. Some are checked. Some are circled in red. One says: 'Remember to breathe.' It is not checked."
+dialogue_node = "er_whiteboard"
+texture = ExtResource("4_crystal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Whiteboard"]
+shape = SubResource("Rect_Whiteboard")
+
+[node name="Object_Mug" parent="." instance=ExtResource("3_clickable")]
+position = Vector2(950, 520)
+object_id = "er_mug"
+object_name = "Coffee Mug"
+object_description = "A mug that says WORLD'S MOST OKAY FIXER. The coffee inside is cold. It has been cold for a long time."
+dialogue_node = "er_mug"
+texture = ExtResource("5_glow")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Mug"]
+shape = SubResource("Rect_Mug")
