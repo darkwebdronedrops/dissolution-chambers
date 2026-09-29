@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://threshold_chamber_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/threshold.png" id="2_threshold_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="4_papers"]
 [ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
 
@@ -36,11 +36,9 @@ background_texture = ExtResource("2_threshold_bg")
 position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_threshold_bg")
-
-# Exit Zones
 [node name="Zone_WritingRoom" type="Area2D" parent="."]
+parent = "."
 position = Vector2(300, 400)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_WritingRoom"]
 shape = SubResource("Rect_WritingRoom")
 
@@ -49,16 +47,14 @@ position = Vector2(1620, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Garden"]
 shape = SubResource("Rect_Garden")
-
-# Clickable Objects
 [node name="Object_Door" parent="." instance=ExtResource("3_clickable")]
+parent = "."
 position = Vector2(960, 300)
 object_id = "threshold_door"
 object_name = "The Door"
 object_description = "A door that was open. It stays open. It doesn't know how to close."
 dialogue_node = "th_door"
 texture = ExtResource("4_papers")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Door"]
 shape = SubResource("Rect_Door")
 

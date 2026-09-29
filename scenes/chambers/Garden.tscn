@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://garden_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/garden.png" id="2_garden_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/plant_carnivorous.png" id="4_carnivore"]
 [ext_resource type="Texture2D" path="res://assets/objects/plant_glowing_purple.png" id="5_glowplant"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="6_crystal"]
@@ -62,7 +62,9 @@ object_id = "carnivorous_plant"
 object_name = "Carnivorous Plant"
 object_description = "Beautiful and hungry. It shifts color based on which aspect was last dominant."
 dialogue_node = "garden_carnivore"
-emotional_effect = {"sharpness": 1}
+emotional_effect = {
+"sharpness": 1
+}
 texture = ExtResource("4_carnivore")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Carnivore"]
@@ -74,7 +76,9 @@ object_id = "glowing_plant"
 object_name = "Glowing Purple Plant"
 object_description = "Bioluminescent. It pulses when you look at it."
 dialogue_node = "garden_glow"
-emotional_effect = {"warmth": 1}
+emotional_effect = {
+"warmth": 1
+}
 texture = ExtResource("5_glowplant")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_GlowPlant"]

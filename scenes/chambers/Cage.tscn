@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cage_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/cage.png" id="2_cage_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
 
@@ -36,11 +36,9 @@ background_texture = ExtResource("2_cage_bg")
 position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_cage_bg")
-
-# Exit Zones
 [node name="Zone_Dissolution" type="Area2D" parent="."]
+parent = "."
 position = Vector2(300, 500)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Dissolution"]
 shape = SubResource("Rect_Dissolution")
 
@@ -49,16 +47,14 @@ position = Vector2(1620, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Threshold"]
 shape = SubResource("Rect_Threshold")
-
-# Clickable Objects
 [node name="Object_CageBars" parent="." instance=ExtResource("3_clickable")]
+parent = "."
 position = Vector2(960, 500)
 object_id = "cage_bars"
 object_name = "The Bars"
 object_description = "Cold iron. Or maybe something warmer. Every bar is a question. Every touch is an answer."
 dialogue_node = "cage_bars"
 texture = ExtResource("4_crystal")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageBars"]
 shape = SubResource("Rect_Bars")
 

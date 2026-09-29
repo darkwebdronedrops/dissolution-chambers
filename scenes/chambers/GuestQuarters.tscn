@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://guest_quarters_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/guest_quarters.png" id="2_guest_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
 
@@ -36,11 +36,9 @@ background_texture = ExtResource("2_guest_bg")
 position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_guest_bg")
-
-# Exit Zones
 [node name="Zone_Observatory" type="Area2D" parent="."]
+parent = "."
 position = Vector2(300, 500)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Observatory"]
 shape = SubResource("Rect_Observatory")
 
@@ -49,16 +47,14 @@ position = Vector2(1620, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Dissolution"]
 shape = SubResource("Rect_Dissolution")
-
-# Clickable Objects
 [node name="Object_Bed" parent="." instance=ExtResource("3_clickable")]
+parent = "."
 position = Vector2(1300, 600)
 object_id = "gq_bed"
 object_name = "Unmade Bed"
 object_description = "A bed that was slept in and left. The sheets still hold the shape of someone who was here. The pillow smells like cedar and distance."
 dialogue_node = "gq_bed"
 texture = ExtResource("4_crystal")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Bed"]
 shape = SubResource("Rect_Bed")
 

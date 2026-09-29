@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dissolution_chamber_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/dissolution_chamber_v2.png" id="2_dissolution_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_words"]
 

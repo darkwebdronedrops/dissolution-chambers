@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dissolution_effect_001"]
+[gd_scene format=3]
 
 [ext_resource type="Shader" path="res://assets/shaders/dissolution.gdshader" id="1_dissolution_shader"]
 [ext_resource type="Script" path="res://scripts/DissolutionVisual.gd" id="1_dissolution_visual"]

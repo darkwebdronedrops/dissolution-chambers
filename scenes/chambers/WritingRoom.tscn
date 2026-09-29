@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://writing_room_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/writing_room.png" id="2_writing_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="4_papers"]
 [ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="6_words"]

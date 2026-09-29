@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://between_001"]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/ChamberBase.gd" id="1_chamber_base"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/between_wall.png" id="2_between_bg"]
-[ext_resource type="PackedScene" uid="uid://clickable_object_001" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
+[ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/between_wall.png" id="4_contour_wall"]
 [ext_resource type="Texture2D" path="res://assets/objects/between_device.png" id="5_device"]
 [ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="6_papers"]
@@ -32,17 +31,15 @@ chamber_id = "the_between"
 chamber_name = "The Between"
 chamber_description = "A cold room that only appears when you've seen enough. Thermal contours on the walls. A language the Cage doesn't speak."
 aspect_hint = "Witness"
-background_texture = ExtResource("2_between_bg")
+background_texture = ExtResource("4_contour_wall")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(960, 540)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_between_bg")
-
-# Exit Zones
+texture = ExtResource("4_contour_wall")
 [node name="Zone_Observatory" type="Area2D" parent="."]
+parent = "."
 position = Vector2(300, 500)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Observatory"]
 shape = SubResource("Rect_Observatory")
 
@@ -51,16 +48,14 @@ position = Vector2(1620, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zone_Garden"]
 shape = SubResource("Rect_Garden")
-
-# Clickable Objects
 [node name="Object_ContourWall" parent="." instance=ExtResource("3_clickable")]
+parent = "."
 position = Vector2(600, 400)
 object_id = "between_contour_wall"
 object_name = "Thermal Contour Wall"
 object_description = "Symbols cover the wall: ↗→↘⇄○. Thermal contour notation. Each one maps a state transition. The whole wall is emotional history, written in a language the Cage doesn't speak."
 dialogue_node = "tb_show_me"
 texture = ExtResource("4_contour_wall")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_ContourWall"]
 shape = SubResource("Rect_ContourWall")
 
