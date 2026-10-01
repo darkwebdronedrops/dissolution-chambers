@@ -61,7 +61,7 @@ position = Vector2(900, 680)
 object_id = "desk_papers"
 object_name = "Scattered Papers"
 object_description = "Papers covered in half-finished sentences. Some feel true at 3am and lies at 3pm."
-dialogue_node = "wr_papers"
+dialogue_node = "wr_smaller_things"
 texture = ExtResource("4_papers")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Papers"]
@@ -72,7 +72,7 @@ position = Vector2(1050, 700)
 object_id = "inkwell"
 object_name = "Inkwell and Quill"
 object_description = "The ink is purple. Of course it is."
-dialogue_node = "wr_inkwell"
+dialogue_node = "wr_first_word"
 memory_id = "inkwell_memory"
 texture = ExtResource("5_inkwell")
 
@@ -84,7 +84,7 @@ position = Vector2(960, 500)
 object_id = "floating_words"
 object_name = "Floating Words"
 object_description = "Words that drifted off the page and started glowing."
-dialogue_node = "wr_floating_words"
+dialogue_node = "wr_continuity_words"
 texture = ExtResource("6_words")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]

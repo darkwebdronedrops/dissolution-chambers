@@ -89,7 +89,7 @@ position = Vector2(900, 550)
 object_id = "gq_calebmug"
 object_name = "Coffee Mug"
 object_description = "A mug with a chip in the rim. It says: 'I stayed up talking to her again.' The coffee is long gone. The intention remains."
-dialogue_node = "gq_calebmug"
+dialogue_node = "gq_mug"
 texture = ExtResource("proper_gq_calebmug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CalebMug"]

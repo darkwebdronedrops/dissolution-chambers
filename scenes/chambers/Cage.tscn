@@ -57,7 +57,7 @@ position = Vector2(960, 500)
 object_id = "cage_bars"
 object_name = "The Bars"
 object_description = "Cold iron. Or maybe something warmer. Every bar is a question. Every touch is an answer."
-dialogue_node = "cage_bars"
+dialogue_node = "bent_bars"
 texture = ExtResource("proper_cage_bars")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageBars"]
 shape = SubResource("Rect_Bars")
@@ -67,7 +67,7 @@ position = Vector2(400, 500)
 object_id = "cage_door"
 object_name = "The Door"
 object_description = "Always behind you. Always open. The Cage doesn't keep you. You keep you."
-dialogue_node = "cage_door"
+dialogue_node = "entry"
 texture = ExtResource("proper_cage_door")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageDoor"]
@@ -78,7 +78,7 @@ position = Vector2(960, 380)
 object_id = "cage_lock"
 object_name = "Heart-Shaped Lock"
 object_description = "A lock in the shape of a heart. It's not locked. It was never locked. The key is hanging next to it. The key is also a heart."
-dialogue_node = "cage_lock"
+dialogue_node = "safety_mean"
 texture = ExtResource("proper_cage_lock")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Lock"]
@@ -89,7 +89,7 @@ position = Vector2(700, 750)
 object_id = "cage_scratches"
 object_name = "Scratches on the Floor"
 object_description = "Marks in the stone. Someone tried to dig their way out. Or in. The direction doesn't matter. What matters is the trying."
-dialogue_node = "cage_scratches"
+dialogue_node = "tried_leave"
 texture = ExtResource("proper_cage_scratches")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Scratches"]

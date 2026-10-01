@@ -61,7 +61,7 @@ position = Vector2(1200, 700)
 object_id = "carnivorous_plant"
 object_name = "Carnivorous Plant"
 object_description = "Beautiful and hungry. It shifts color based on which aspect was last dominant."
-dialogue_node = "garden_carnivore"
+dialogue_node = "gr_bites"
 emotional_effect = {
 "sharpness": 1
 }
@@ -75,7 +75,7 @@ position = Vector2(500, 600)
 object_id = "glowing_plant"
 object_name = "Glowing Purple Plant"
 object_description = "Bioluminescent. It pulses when you look at it."
-dialogue_node = "garden_glow"
+dialogue_node = "gr_touch_purple"
 emotional_effect = {
 "warmth": 1
 }
@@ -89,7 +89,7 @@ position = Vector2(1500, 500)
 object_id = "crystal_growth"
 object_name = "Crystal Growth"
 object_description = "Something crystallizing out of the soil. It wasn't here yesterday."
-dialogue_node = "garden_crystal"
+dialogue_node = "gr_color_now"
 memory_id = "garden_crystal_memory"
 texture = ExtResource("6_crystal")
 

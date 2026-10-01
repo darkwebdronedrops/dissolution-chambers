@@ -59,7 +59,7 @@ position = Vector2(800, 500)
 object_id = "dissolution_crystal"
 object_name = "Crystal Formation"
 object_description = "A crystal growing out of the floor. It hums."
-dialogue_node = "dissolution_crystal"
+dialogue_node = "dc_become"
 memory_id = "dissolution_crystal_memory"
 texture = ExtResource("proper_dissolution_crystal")
 
@@ -71,7 +71,7 @@ position = Vector2(1100, 400)
 object_id = "dissolution_words"
 object_name = "Floating Words"
 object_description = "Words that someone said during dissolution. They got stuck."
-dialogue_node = "dissolution_words"
+dialogue_node = "dc_enough"
 texture = ExtResource("proper_dissolution_words")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]

@@ -86,7 +86,7 @@ nodes:
         emotional_effect: { warmth: +3, depth: +2 }
         dissolve_after: true
       - text: "What else do you need?"
-        target: dc_need
+        target: dc_need_from
         emotional_effect: { warmth: +2, depth: +1 }
       - text: "You can be as greedy as you want."
         target: dc_greedy_want

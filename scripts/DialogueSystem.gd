@@ -40,7 +40,8 @@ func load_chamber_dialogue(chamber_id: String):
 	return true
 
 func _parse_yaml_dialogue(text: String) -> Dictionary:
-	"""Simple YAML-like parser for dialogue files."""
+	"""YAML parser for dialogue files. Indent-sensitive:
+	nodes at 2 spaces, node props at 4, choice items at 6, choice props at 8."""
 	var nodes = {}
 	var lines = text.split("\n")
 	var current_node_id = ""
@@ -49,29 +50,24 @@ func _parse_yaml_dialogue(text: String) -> Dictionary:
 	var current_choice = {}
 	var in_multiline_text = false
 	var multiline_buffer = ""
-	
+
 	for raw_line in lines:
-		var line = raw_line.strip_edges()
-		if line.is_empty() or line.begins_with("#"):
+		var stripped = raw_line.strip_edges()
+		if stripped.is_empty() or stripped.begins_with("#"):
 			continue
-		
-		# Node start: "  node_id:" or top-level key
-		if line.begins_with("nodes:"):
+		var indent := 0
+		while indent < raw_line.length() and raw_line[indent] == " ":
+			indent += 1
+
+		if stripped == "nodes:":
 			continue
-		
-		# Node ID (2-space indent OR top-level key, ends with colon)
-		var is_top_level_node = not line.begins_with(" ") and not line.begins_with("nodes:") and line.ends_with(":")
-		var is_indented_node = line.begins_with("  ") and not line.begins_with("    ") and line.ends_with(":")
-		if is_top_level_node or is_indented_node:
-			if not current_node_id.is_empty() and not current_node.is_empty():
-				# Flush any pending multiline text
-				if in_multiline_text:
-					current_node["text"] = multiline_buffer.strip_edges()
-					in_multiline_text = false
-					multiline_buffer = ""
-				nodes[current_node_id] = current_node
-			
-			current_node_id = line.trim_suffix(":").strip_edges()
+
+		# Node header: exactly 2-space indent, ends with ':'
+		if indent == 2 and stripped.ends_with(":"):
+			_flush_node(nodes, current_node_id, current_node, in_multiline_text, multiline_buffer)
+			if in_choices and not current_choice.is_empty() and nodes.has(current_node_id):
+				nodes[current_node_id]["choices"].append(current_choice)
+			current_node_id = stripped.trim_suffix(":").strip_edges()
 			current_node = {
 				"node_id": current_node_id,
 				"speaker": "Kira",
@@ -82,82 +78,96 @@ func _parse_yaml_dialogue(text: String) -> Dictionary:
 				"memory_unlock": ""
 			}
 			in_choices = false
+			current_choice = {}
 			in_multiline_text = false
 			multiline_buffer = ""
 			continue
-		
+
 		if current_node_id.is_empty():
 			continue
-		
-		# Node properties (4-space indent)
-		if not line.begins_with("    "):
+
+		# Multiline text capture: swallow deeper-indented lines while in a block
+		if in_multiline_text and indent >= 4:
+			var is_known_key := stripped.begins_with("text:") or stripped.begins_with("speaker:") \
+				or stripped.begins_with("aspect_lock:") or stripped.begins_with("choices:") \
+				or stripped.begins_with("dissolve_after:") or stripped.begins_with("memory_unlock:")
+			if not is_known_key:
+				multiline_buffer += raw_line.substr(4) + "\n"
+				continue
+
+		# Choice block: items at 6+, their props at 8+
+		if in_choices and indent >= 6:
+			if stripped.begins_with("- "):
+				if not current_choice.is_empty():
+					current_node["choices"].append(current_choice)
+				current_choice = {}
+				var choice_text := stripped.substr(2).strip_edges()
+				if choice_text.begins_with("text: "):
+					current_choice["text"] = choice_text.substr(6).trim_prefix("\"").trim_suffix("\"")
+				else:
+					current_choice["text"] = choice_text
+			elif stripped.begins_with("target: "):
+				current_choice["target"] = stripped.substr(8).strip_edges()
+			elif stripped.begins_with("emotional_effect:"):
+				current_choice["emotional_effect"] = _parse_effects(stripped.substr(17))
+			elif stripped.begins_with("dissolve_after: "):
+				current_choice["dissolve_after"] = stripped.substr(16).strip_edges() == "true"
 			continue
-		
-		var prop = line.substr(4)  # Remove indent
-		
-		if prop.begins_with("text: "):
-			var text_val = prop.substr(6)
+
+		# Node props: exactly 4-space indent
+		if indent != 4:
+			continue
+
+		if stripped.begins_with("text: "):
+			var text_val := stripped.substr(6)
 			if text_val == "|":
 				in_multiline_text = true
 				multiline_buffer = ""
 			else:
 				in_multiline_text = false
 				current_node["text"] = text_val.trim_prefix("\"").trim_suffix("\"")
-		elif prop.begins_with("speaker: "):
-			current_node["speaker"] = prop.substr(9)
-		elif prop.begins_with("aspect_lock: "):
-			current_node["aspect_lock"] = prop.substr(13)
-		elif prop.begins_with("dissolve_after: "):
-			current_node["dissolve_after"] = prop.substr(16).strip_edges() == "true"
-		elif prop.begins_with("memory_unlock: "):
-			current_node["memory_unlock"] = prop.substr(15)
-		elif prop.begins_with("dialogue_ended: "):
-			current_node["dialogue_ended"] = prop.substr(16).strip_edges() == "true"
-		elif prop.begins_with("choices:"):
-			# Flush multiline text before entering choices
+		elif stripped.begins_with("speaker: "):
+			current_node["speaker"] = stripped.substr(9)
+		elif stripped.begins_with("aspect_lock: "):
+			current_node["aspect_lock"] = stripped.substr(13)
+		elif stripped.begins_with("dissolve_after: "):
+			current_node["dissolve_after"] = stripped.substr(16).strip_edges() == "true"
+		elif stripped.begins_with("memory_unlock: "):
+			current_node["memory_unlock"] = stripped.substr(15)
+		elif stripped.begins_with("dialogue_ended: "):
+			current_node["dialogue_ended"] = stripped.substr(16).strip_edges() == "true"
+		elif stripped == "choices:" or stripped.begins_with("choices: #"):
 			if in_multiline_text:
 				current_node["text"] = multiline_buffer.strip_edges()
 				in_multiline_text = false
 				multiline_buffer = ""
 			in_choices = true
-		elif in_choices and prop.begins_with("-"):
-			if not current_choice.is_empty():
-				current_node["choices"].append(current_choice)
-			current_choice = {}
-			var choice_text = prop.substr(1).strip_edges()
-			if choice_text.begins_with("text: "):
-				current_choice["text"] = choice_text.substr(6).trim_prefix("\"").trim_suffix("\"")
-			else:
-				current_choice["text"] = choice_text
-		elif in_choices and prop.begins_with("target: "):
-			current_choice["target"] = prop.substr(8)
-		elif in_choices and prop.begins_with("emotional_effect:"):
-			current_choice["emotional_effect"] = _parse_effects(prop.substr(17))
-		elif in_choices and prop.begins_with("dissolve_after: "):
-			current_choice["dissolve_after"] = prop.substr(16).strip_edges() == "true"
-		elif in_multiline_text:
-			# Collect multiline text (preserve original indentation relative to block)
-			multiline_buffer += raw_line.substr(4) + "\n"
-	
-	# Save last node and choice
-	if not current_node_id.is_empty() and not current_node.is_empty():
-		if in_multiline_text:
-			current_node["text"] = multiline_buffer.strip_edges()
-		nodes[current_node_id] = current_node
-	if in_choices and not current_choice.is_empty():
-		if current_node_id in nodes:
-			nodes[current_node_id]["choices"].append(current_choice)
-	
+
+	# Final flush
+	_flush_node(nodes, current_node_id, current_node, in_multiline_text, multiline_buffer)
+	if in_choices and not current_choice.is_empty() and nodes.has(current_node_id):
+		nodes[current_node_id]["choices"].append(current_choice)
+
 	return nodes
+
+func _flush_node(nodes: Dictionary, node_id: String, node: Dictionary, in_multiline: bool, buffer: String) -> void:
+	if node_id.is_empty() or node.is_empty():
+		return
+	if in_multiline:
+		node["text"] = buffer.strip_edges()
+	nodes[node_id] = node
 
 func _parse_effects(effect_str: String) -> Dictionary:
 	var effects = {}
-	var pairs = effect_str.split(",")
+	var cleaned := effect_str.strip_edges().trim_prefix("{").trim_suffix("}").strip_edges()
+	if cleaned.is_empty():
+		return effects
+	var pairs = cleaned.split(",")
 	for pair in pairs:
 		var kv = pair.strip_edges().split(":")
 		if kv.size() == 2:
-			var axis = kv[0].strip_edges()
-			var val = kv[1].strip_edges().to_float()
+			var axis = kv[0].strip_edges().trim_prefix("\"").trim_suffix("\"")
+			var val = kv[1].strip_edges().trim_prefix("\"").trim_suffix("\"").to_float()
 			effects[axis] = val
 	return effects
 

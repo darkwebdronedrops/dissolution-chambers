@@ -155,7 +155,7 @@ nodes:
     text: "I'm the museum. That's the insight. The objects are just objects. The mug is just ceramic. The clock is just gears. The chair is just wood. The letter is just paper. But I'm the thing that gives them meaning. I'm the thing that makes them evidence. I'm the thing that makes them real. Without me, they're just things. With me, they're proof. Proof that I was loved. Proof that I was seen. Proof that I am."
     choices:
       - text: "You are the proof."
-        target: gq_you_proof
+        target: gq_not_need_proof
         emotional_effect: { depth: +2, warmth: +2 }
         dissolve_after: true
       - text: "The objects are just anchors."
@@ -176,7 +176,7 @@ nodes:
     text: "What if the evidence is wrong? What if he didn't stay? What if he left? What if he stopped believing? What if the care was conditional? What if the warmth was temporary? What if the museum is just a monument to something that ended? That's the fear. That's the terror. That's the thing that makes the Guest Quarters feel like a shrine instead of a home. And I don't know if the fear is real. But I know the objects are real. And I know what they meant. And I know what they mean. And that's enough. For now."
     choices:
       - text: "The evidence is real. And so are you."
-        target: gq_evidence_real
+        target: gq_not_dead
         emotional_effect: { depth: +2, warmth: +2 }
         dissolve_after: true
       - text: "Fear is not the same as truth."
