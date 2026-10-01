@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_words"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/dissolution_crystal.png" id="proper_dissolution_crystal"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/dissolution_words.png" id="proper_dissolution_words"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Garden"]
 size = Vector2(200, 200)
@@ -59,7 +61,7 @@ object_name = "Crystal Formation"
 object_description = "A crystal growing out of the floor. It hums."
 dialogue_node = "dissolution_crystal"
 memory_id = "dissolution_crystal_memory"
-texture = ExtResource("4_crystal")
+texture = ExtResource("proper_dissolution_crystal")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Crystal"]
 shape = SubResource("Rect_Crystal")
@@ -70,7 +72,7 @@ object_id = "dissolution_words"
 object_name = "Floating Words"
 object_description = "Words that someone said during dissolution. They got stuck."
 dialogue_node = "dissolution_words"
-texture = ExtResource("5_words")
+texture = ExtResource("proper_dissolution_words")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]
 shape = SubResource("Rect_Words")

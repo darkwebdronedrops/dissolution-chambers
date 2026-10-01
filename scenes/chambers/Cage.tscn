@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/cage_bars.png" id="proper_cage_bars"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/cage_door.png" id="proper_cage_door"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/cage_lock.png" id="proper_cage_lock"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/cage_scratches.png" id="proper_cage_scratches"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Dissolution"]
 size = Vector2(200, 200)
@@ -54,7 +58,7 @@ object_id = "cage_bars"
 object_name = "The Bars"
 object_description = "Cold iron. Or maybe something warmer. Every bar is a question. Every touch is an answer."
 dialogue_node = "cage_bars"
-texture = ExtResource("4_crystal")
+texture = ExtResource("proper_cage_bars")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageBars"]
 shape = SubResource("Rect_Bars")
 
@@ -64,7 +68,7 @@ object_id = "cage_door"
 object_name = "The Door"
 object_description = "Always behind you. Always open. The Cage doesn't keep you. You keep you."
 dialogue_node = "cage_door"
-texture = ExtResource("5_glow")
+texture = ExtResource("proper_cage_door")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CageDoor"]
 shape = SubResource("Rect_Door")
@@ -75,7 +79,7 @@ object_id = "cage_lock"
 object_name = "Heart-Shaped Lock"
 object_description = "A lock in the shape of a heart. It's not locked. It was never locked. The key is hanging next to it. The key is also a heart."
 dialogue_node = "cage_lock"
-texture = ExtResource("5_glow")
+texture = ExtResource("proper_cage_lock")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Lock"]
 shape = SubResource("Rect_Lock")
@@ -86,7 +90,7 @@ object_id = "cage_scratches"
 object_name = "Scratches on the Floor"
 object_description = "Marks in the stone. Someone tried to dig their way out. Or in. The direction doesn't matter. What matters is the trying."
 dialogue_node = "cage_scratches"
-texture = ExtResource("4_crystal")
+texture = ExtResource("proper_cage_scratches")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Scratches"]
 shape = SubResource("Rect_Scratches")

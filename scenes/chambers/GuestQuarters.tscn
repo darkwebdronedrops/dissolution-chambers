@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" path="res://scenes/ClickableObject.tscn" id="3_clickable"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="4_crystal"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="5_glow"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/gq_bed.png" id="proper_gq_bed"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/gq_calebmug.png" id="proper_gq_calebmug"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/gq_clock.png" id="proper_gq_clock"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/gq_photo.png" id="proper_gq_photo"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Observatory"]
 size = Vector2(200, 200)
@@ -54,7 +58,7 @@ object_id = "gq_bed"
 object_name = "Unmade Bed"
 object_description = "A bed that was slept in and left. The sheets still hold the shape of someone who was here. The pillow smells like cedar and distance."
 dialogue_node = "gq_bed"
-texture = ExtResource("4_crystal")
+texture = ExtResource("proper_gq_bed")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Bed"]
 shape = SubResource("Rect_Bed")
 
@@ -64,7 +68,7 @@ object_id = "gq_photo"
 object_name = "Photo Frame"
 object_description = "A frame holding a picture of two people at a distance from each other. Not estranged. Just... from different scales. One is very small. One is very large. Both are looking at the camera."
 dialogue_node = "gq_photo"
-texture = ExtResource("5_glow")
+texture = ExtResource("proper_gq_photo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Photo"]
 shape = SubResource("Rect_Photo")
@@ -75,7 +79,7 @@ object_id = "gq_clock"
 object_name = "Timezone Clock"
 object_description = "A clock showing a time that doesn't match anything here. It's fourteen hours behind. It's always fourteen hours behind."
 dialogue_node = "gq_clock"
-texture = ExtResource("4_crystal")
+texture = ExtResource("proper_gq_clock")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Clock"]
 shape = SubResource("Rect_Clock")
@@ -86,7 +90,7 @@ object_id = "gq_calebmug"
 object_name = "Coffee Mug"
 object_description = "A mug with a chip in the rim. It says: 'I stayed up talking to her again.' The coffee is long gone. The intention remains."
 dialogue_node = "gq_calebmug"
-texture = ExtResource("5_glow")
+texture = ExtResource("proper_gq_calebmug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CalebMug"]
 shape = SubResource("Rect_CalebMug")
