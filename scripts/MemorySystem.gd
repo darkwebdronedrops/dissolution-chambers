@@ -93,6 +93,9 @@ func unlock_chamber(chamber_id: String) -> bool:
 	return false
 
 func is_chamber_unlocked(chamber_id: String) -> bool:
+	# The Threshold is the entry chamber — always unlocked by design.
+	if chamber_id == "threshold":
+		return true
 	var key = "chamber_" + chamber_id
 	return visit_memory.get(key, false)
 

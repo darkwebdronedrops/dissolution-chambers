@@ -126,6 +126,12 @@ func _update_available_chambers():
 
 func _enter_chamber(chamber_id: String):
 	current_chamber = chamber_id
+	MemorySystem.unlock_chamber(chamber_id)
+	
+	# Dismiss any stale dialogue UI from the previous chamber
+	var dlg = find_child("DialogueBox", true, false)
+	if dlg:
+		dlg.visible = false
 	
 	# Find and activate chamber
 	for child in chamber_container.get_children():

@@ -9,6 +9,8 @@ signal choices_presented(options: Array[Dictionary])
 signal dialogue_ended()
 signal dissolution_triggered()
 
+# Merged view across all loaded chambers — all chambers are instanced
+# simultaneously, so single-chamber storage would clobber earlier loads.
 var dialogue_data: Dictionary = {}
 var current_chamber: String = ""
 var current_node: String = ""
@@ -16,6 +18,9 @@ var current_yaml_path: String = ""
 
 func _ready():
 	print("DialogueSystem: Initialized")
+	# The dissolution sequence is fully built but nothing invoked it —
+	# bridge our trigger signal to the manager's sequence.
+	dissolution_triggered.connect(DissolutionManager.trigger_dissolution)
 
 func load_chamber_dialogue(chamber_id: String):
 	var path = "res://data/dialogue/%s.yaml" % chamber_id
@@ -33,10 +38,12 @@ func load_chamber_dialogue(chamber_id: String):
 	var raw_text = file.get_as_text()
 	file.close()
 	
-	dialogue_data = _parse_yaml_dialogue(raw_text)
+	var parsed := _parse_yaml_dialogue(raw_text)
+	for node_id in parsed.keys():
+		dialogue_data[node_id] = parsed[node_id]
 	current_chamber = chamber_id
 	
-	print("DialogueSystem: Loaded %s (%d nodes)" % [chamber_id, dialogue_data.size()])
+	print("DialogueSystem: Loaded %s (%d nodes, %d total)" % [chamber_id, parsed.size(), dialogue_data.size()])
 	return true
 
 func _parse_yaml_dialogue(text: String) -> Dictionary:
@@ -230,7 +237,13 @@ func _show_current_node():
 	else:
 		for ch in choices:
 			ch["_locked"] = not requirements_met(ch)
-		choices_presented.emit(choices)
+		choices_presented.emit(_typed_choices(choices))
+
+func _typed_choices(choices: Array) -> Array[Dictionary]:
+	var typed: Array[Dictionary] = []
+	for ch in choices:
+		typed.append(ch)
+	return typed
 
 func requirements_met(choice: Dictionary) -> bool:
 	var req: Dictionary = choice.get("requires", {})
@@ -268,7 +281,7 @@ func make_choice(choice_index: int):
 	if choice.get("_locked", false):
 		var gate_line: String = choice.get("locked_text", "Not yet. Not like this. But it's here. I'm here. Come back different, and I'll show you.")
 		dialogue_line.emit(gate_line, "Kira", KiraAspect.get_portrait_for_aspect(EmotionalState.current_aspect))
-		choices_presented.emit(choices)
+		choices_presented.emit(_typed_choices(choices))
 		return
 	
 	# Apply emotional effects

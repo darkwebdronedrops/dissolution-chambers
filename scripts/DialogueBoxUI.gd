@@ -26,6 +26,7 @@ func _on_dialogue_started(node_id: String):
 	print("DialogueBoxUI: Dialogue started — %s" % node_id)
 
 func _on_dialogue_line(text: String, speaker: String, portrait_path: String):
+	visible = true
 	speaker_label.text = speaker
 	dialogue_text.text = text
 	
@@ -60,6 +61,17 @@ func _on_choice_pressed(index: int):
 func _on_dialogue_ended():
 	visible = false
 	_clear_choices()
+
+func _unhandled_input(event: InputEvent) -> void:
+	# A remark card (fragment/fallback line with no choices) dismisses on click.
+	if visible and choice_buttons.is_empty():
+		var dismiss := false
+		if event is InputEventMouseButton and event.pressed:
+			dismiss = true
+		elif event.is_action_pressed("ui_accept"):
+			dismiss = true
+		if dismiss:
+			visible = false
 	print("DialogueBoxUI: Dialogue ended")
 
 func _on_dissolution_triggered():

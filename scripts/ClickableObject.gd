@@ -54,10 +54,10 @@ func _interact():
 	# Check for memory fragment first
 	var fragment = MemoryFragmentDatabase.get_fragment_for_object(object_id)
 	if fragment and fragment.can_trigger():
-		# Play memory fragment
+		# Play memory fragment — a remark card, not a dialogue tree
 		fragment.mark_heard()
+		DialogueSystem.dialogue_started.emit("memory_fragment")
 		DialogueSystem.dialogue_line.emit(fragment.text, "Kira", "")
-		DialogueSystem.dialogue_ended.emit()
 		print("ClickableObject: Memory fragment played — %s" % fragment.fragment_id)
 		return
 	
@@ -87,5 +87,5 @@ func _show_fallback_text():
 		fallback_text = "It's %s." % object_name
 	
 	# Emit a signal that the dialogue box can catch as a simple line
+	DialogueSystem.dialogue_started.emit("fallback")
 	DialogueSystem.dialogue_line.emit(fallback_text, "Kira", "")
-	DialogueSystem.dialogue_ended.emit()
