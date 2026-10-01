@@ -48,6 +48,8 @@ func _parse_yaml_dialogue(text: String) -> Dictionary:
 	var current_node = {}
 	var in_choices = false
 	var current_choice = {}
+	var in_effects_block := false
+	var effect_base := 0
 	var in_multiline_text = false
 	var multiline_buffer = ""
 
@@ -90,13 +92,22 @@ func _parse_yaml_dialogue(text: String) -> Dictionary:
 		if in_multiline_text and indent >= 4:
 			var is_known_key := stripped.begins_with("text:") or stripped.begins_with("speaker:") \
 				or stripped.begins_with("aspect_lock:") or stripped.begins_with("choices:") \
-				or stripped.begins_with("dissolve_after:") or stripped.begins_with("memory_unlock:")
+				or stripped.begins_with("dissolve_after:") or stripped.begins_with("memory_unlock:") \
+			or stripped.begins_with("- ")
 			if not is_known_key:
 				multiline_buffer += raw_line.substr(4) + "\n"
 				continue
 
-		# Choice block: items at 6+, their props at 8+
-		if in_choices and indent >= 6:
+		# Choice block: both dialects (items at 4 or 6, props deeper).
+		# Handles inline and multi-line emotional_effect blocks.
+		if in_choices and indent >= 4:
+			if in_effects_block:
+				if indent > effect_base and stripped.contains(":"):
+					var ekv := stripped.split(":")
+					if ekv.size() == 2 and ekv[1].strip_edges().is_valid_float():
+						current_choice["emotional_effect"][ekv[0].strip_edges()] = ekv[1].strip_edges().to_float()
+						continue
+				in_effects_block = false
 			if stripped.begins_with("- "):
 				if not current_choice.is_empty():
 					current_node["choices"].append(current_choice)
@@ -106,12 +117,23 @@ func _parse_yaml_dialogue(text: String) -> Dictionary:
 					current_choice["text"] = choice_text.substr(6).trim_prefix("\"").trim_suffix("\"")
 				else:
 					current_choice["text"] = choice_text
-			elif stripped.begins_with("target: "):
-				current_choice["target"] = stripped.substr(8).strip_edges()
+			elif stripped == "emotional_effect:":
+				current_choice["emotional_effect"] = {}
+				in_effects_block = true
+				effect_base = indent
 			elif stripped.begins_with("emotional_effect:"):
 				current_choice["emotional_effect"] = _parse_effects(stripped.substr(17))
+			elif stripped.begins_with("target: "):
+				current_choice["target"] = stripped.substr(8).strip_edges()
 			elif stripped.begins_with("dissolve_after: "):
 				current_choice["dissolve_after"] = stripped.substr(16).strip_edges() == "true"
+			elif stripped.begins_with("requires: "):
+				current_choice["requires"] = _parse_effects(stripped.substr(10))
+			elif stripped.begins_with("requires_memory: "):
+				current_choice["requires_memory"] = stripped.substr(18).strip_edges()
+			elif stripped.begins_with("locked_text: "):
+				var lt := stripped.substr(13).strip_edges()
+				current_choice["locked_text"] = lt.trim_prefix("\"").trim_suffix("\"")
 			continue
 
 		# Node props: exactly 4-space indent
@@ -200,13 +222,37 @@ func _show_current_node():
 	if not mem.is_empty():
 		MemorySystem.record_memory(mem)
 	
-	# Present choices
+	# Present choices (annotated with lock state)
 	var choices = node.get("choices", [])
 	if choices.is_empty():
 		# End of dialogue branch
 		dialogue_ended.emit()
 	else:
+		for ch in choices:
+			ch["_locked"] = not requirements_met(ch)
 		choices_presented.emit(choices)
+
+func requirements_met(choice: Dictionary) -> bool:
+	var req: Dictionary = choice.get("requires", {})
+	for axis in req.keys():
+		if EmotionalState.get(axis) < req[axis]:
+			return false
+	var mem: String = choice.get("requires_memory", "")
+	if not mem.is_empty():
+		if mem.begins_with("visits:"):
+			return MemorySystem.total_visits >= mem.trim_prefix("visits:").to_int()
+		if mem.begins_with("dissolutions:"):
+			return MemorySystem.total_dissolutions_witnessed >= mem.trim_prefix("dissolutions:").to_int()
+		if mem.begins_with("chamber:"):
+			return MemorySystem.is_chamber_unlocked(mem.trim_prefix("chamber:"))
+		return MemorySystem.memories_unlocked.has(mem)
+	return true
+
+func first_available_choice_index(choices: Array) -> int:
+	for i in choices.size():
+		if not choices[i].get("_locked", false):
+			return i
+	return -1
 
 func make_choice(choice_index: int):
 	var node = dialogue_data.get(current_node, {})
@@ -217,6 +263,13 @@ func make_choice(choice_index: int):
 		return
 	
 	var choice = choices[choice_index]
+
+	# Gate check: a locked choice is a window, not a wall — say so, then re-present
+	if choice.get("_locked", false):
+		var gate_line: String = choice.get("locked_text", "Not yet. Not like this. But it's here. I'm here. Come back different, and I'll show you.")
+		dialogue_line.emit(gate_line, "Kira", KiraAspect.get_portrait_for_aspect(EmotionalState.current_aspect))
+		choices_presented.emit(choices)
+		return
 	
 	# Apply emotional effects
 	var effects = choice.get("emotional_effect", {})
