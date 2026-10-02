@@ -74,8 +74,7 @@ texture = ExtResource("proper_cage_door")
 shape = SubResource("Rect_Door")
 
 [node name="Object_Lock" parent="." instance=ExtResource("3_clickable")]
-position = Vector2(560, 430)
-scale = Vector2(1.2, 1.2)
+position = Vector2(960, 628)
 object_id = "cage_lock"
 object_name = "Heart-Shaped Lock"
 object_description = "A lock in the shape of a heart. It's not locked. It was never locked. The key is hanging next to it. The key is also a heart."
