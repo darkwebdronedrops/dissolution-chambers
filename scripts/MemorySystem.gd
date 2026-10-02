@@ -55,9 +55,11 @@ func load_game():
 		push_error("MemorySystem: Failed to parse save file")
 		return
 	
-	endings_seen = data.get("endings_seen", [])
-	aspects_encountered = data.get("aspects_encountered", [])
-	memories_unlocked = data.get("memories_unlocked", [])
+	# JSON returns untyped Arrays; typed Array[String] vars reject them.
+	# .assign() copies element-wise and is the safe bridge.
+	endings_seen.assign(data.get("endings_seen", []))
+	aspects_encountered.assign(data.get("aspects_encountered", []))
+	memories_unlocked.assign(data.get("memories_unlocked", []))
 	total_dissolutions_witnessed = data.get("total_dissolutions_witnessed", 0)
 	total_visits = data.get("total_visits", 0)
 	new_game_plus = data.get("new_game_plus", false)
