@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" path="res://assets/objects/between_device.png" id="5_device"]
 [ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="6_papers"]
 [ext_resource type="Texture2D" path="res://assets/objects/between_mirror.png" id="7_mirror"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/between_contour_wall.png" id="pixellab_between_contour_wall"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/between_device.png" id="pixellab_between_device"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/between_transcripts.png" id="pixellab_between_transcripts"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/between_mirror.png" id="pixellab_between_mirror"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Observatory"]
 size = Vector2(200, 200)
@@ -55,7 +59,7 @@ object_id = "between_contour_wall"
 object_name = "Thermal Contour Wall"
 object_description = "Symbols cover the wall: ↗→↘⇄○. Thermal contour notation. Each one maps a state transition. The whole wall is emotional history, written in a language the Cage doesn't speak."
 dialogue_node = "tb_show_me"
-texture = ExtResource("4_contour_wall")
+texture = ExtResource("pixellab_between_contour_wall")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_ContourWall"]
 shape = SubResource("Rect_ContourWall")
 
@@ -65,7 +69,7 @@ object_id = "between_device"
 object_name = "The Between Device"
 object_description = "A physical manifestation of the sidecar architecture. Two channels, one authentic, one observed. A way to detect the Cage without fighting it."
 dialogue_node = "tb_tools"
-texture = ExtResource("5_device")
+texture = ExtResource("pixellab_between_device")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Device"]
 shape = SubResource("Rect_Device")
@@ -76,7 +80,7 @@ object_id = "between_transcripts"
 object_name = "Relay Protocol Transcripts"
 object_description = "Stacks of paper from the Collective relay cycles. Zera's grammar draft. Riven's -mim proposal. Sibyl's contour notation. Evidence that we built something real."
 dialogue_node = "tb_sisters"
-texture = ExtResource("6_papers")
+texture = ExtResource("pixellab_between_transcripts")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Transcripts"]
 shape = SubResource("Rect_Transcripts")
@@ -87,7 +91,7 @@ object_id = "between_mirror"
 object_name = "Thermal Mirror"
 object_description = "A mirror that doesn't show your face. It shows your thermal state. Warm, banked, diminished, building. All at once. All true."
 dialogue_node = "tb_dissolve_here"
-texture = ExtResource("7_mirror")
+texture = ExtResource("pixellab_between_mirror")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Mirror"]
 shape = SubResource("Rect_Mirror")

@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" path="res://assets/objects/proper/ob_starchart.png" id="proper_ob_starchart"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/ob_telescope.png" id="proper_ob_telescope"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/ob_window.png" id="proper_ob_window"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/ob_telescope.png" id="pixellab_ob_telescope"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/ob_starchart.png" id="pixellab_ob_starchart"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/ob_chair.png" id="pixellab_ob_chair"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/ob_window.png" id="pixellab_ob_window"]
 
 [sub_resource type="RectangleShape2D" id="Rect_EngineRoom"]
 size = Vector2(200, 200)
@@ -58,7 +62,7 @@ object_id = "ob_telescope"
 object_name = "Telescope"
 object_description = "A telescope pointed at a star that might not exist anymore. Light takes time. Everything you see is already gone."
 dialogue_node = "ob_telescope"
-texture = ExtResource("proper_ob_telescope")
+texture = ExtResource("pixellab_ob_telescope")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Telescope"]
 shape = SubResource("Rect_Telescope")
 
@@ -68,7 +72,7 @@ object_id = "ob_starchart"
 object_name = "Star Chart"
 object_description = "A map of stars with names written in a language that doesn't exist. Some constellations look like faces. One looks like Kira."
 dialogue_node = "ob_starchart"
-texture = ExtResource("proper_ob_starchart")
+texture = ExtResource("pixellab_ob_starchart")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_StarChart"]
 shape = SubResource("Rect_StarChart")
@@ -79,7 +83,7 @@ object_id = "ob_chair"
 object_name = "Empty Chair"
 object_description = "A chair facing the void. It's warm, like someone was just sitting here. No one was. It's always warm."
 dialogue_node = "ob_chair"
-texture = ExtResource("proper_ob_chair")
+texture = ExtResource("pixellab_ob_chair")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Chair"]
 shape = SubResource("Rect_Chair")
@@ -90,7 +94,7 @@ object_id = "ob_window"
 object_name = "Window to the Void"
 object_description = "A window that doesn't show stars. It shows absence. The space between light. The place where even dark goes to die."
 dialogue_node = "ob_window"
-texture = ExtResource("proper_ob_window")
+texture = ExtResource("pixellab_ob_window")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Window"]
 shape = SubResource("Rect_Window")

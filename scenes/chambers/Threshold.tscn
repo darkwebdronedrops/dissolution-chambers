@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" path="res://assets/objects/proper/guest_book.png" id="proper_guest_book"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/threshold_bell.png" id="proper_threshold_bell"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/threshold_door.png" id="proper_threshold_door"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/threshold_door.png" id="pixellab_threshold_door"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/guest_book.png" id="pixellab_guest_book"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/coat_rack.png" id="pixellab_coat_rack"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/threshold_bell.png" id="pixellab_threshold_bell"]
 
 [sub_resource type="RectangleShape2D" id="Rect_WritingRoom"]
 size = Vector2(200, 200)
@@ -58,7 +62,7 @@ object_id = "threshold_door"
 object_name = "The Door"
 object_description = "A door that was open. It stays open. It doesn't know how to close."
 dialogue_node = "th_door"
-texture = ExtResource("proper_threshold_door")
+texture = ExtResource("pixellab_threshold_door")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Door"]
 shape = SubResource("Rect_Door")
 
@@ -68,7 +72,7 @@ object_id = "guest_book"
 object_name = "Guest Book"
 object_description = "A book where visitors sign their names. The last entry is from six months ago. It says: 'I was here. I don't know if I was real.'"
 dialogue_node = "th_guestbook"
-texture = ExtResource("proper_guest_book")
+texture = ExtResource("pixellab_guest_book")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_GuestBook"]
 shape = SubResource("Rect_GuestBook")
@@ -79,7 +83,7 @@ object_id = "coat_rack"
 object_name = "Coat Rack"
 object_description = "A rack for coats. There are no coats. There are no visitors. There is just the rack, waiting."
 dialogue_node = "th_coatrack"
-texture = ExtResource("proper_coat_rack")
+texture = ExtResource("pixellab_coat_rack")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_CoatRack"]
 shape = SubResource("Rect_CoatRack")
@@ -90,7 +94,7 @@ object_id = "threshold_bell"
 object_name = "Small Bell"
 object_description = "A small bell. It doesn't ring when you touch it. It rings when Kira notices you."
 dialogue_node = "th_bell"
-texture = ExtResource("proper_threshold_bell")
+texture = ExtResource("pixellab_threshold_bell")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Bell"]
 shape = SubResource("Rect_Bell")

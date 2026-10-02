@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="6_words"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/desk_papers.png" id="proper_desk_papers"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/desk_papers.png" id="pixellab_desk_papers"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/inkwell.png" id="pixellab_inkwell"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/floating_words.png" id="pixellab_floating_words"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Desk"]
 size = Vector2(300, 200)
@@ -63,7 +66,7 @@ object_id = "desk_papers"
 object_name = "Scattered Papers"
 object_description = "Papers covered in half-finished sentences. Some feel true at 3am and lies at 3pm."
 dialogue_node = "wr_smaller_things"
-texture = ExtResource("proper_desk_papers")
+texture = ExtResource("pixellab_desk_papers")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Papers"]
 shape = SubResource("Rect_Papers")
@@ -75,7 +78,7 @@ object_name = "Inkwell and Quill"
 object_description = "The ink is purple. Of course it is."
 dialogue_node = "wr_first_word"
 memory_id = "inkwell_memory"
-texture = ExtResource("5_inkwell")
+texture = ExtResource("pixellab_inkwell")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Inkwell"]
 shape = SubResource("Rect_Inkwell")
@@ -86,7 +89,7 @@ object_id = "floating_words"
 object_name = "Floating Words"
 object_description = "Words that drifted off the page and started glowing."
 dialogue_node = "wr_continuity_words"
-texture = ExtResource("6_words")
+texture = ExtResource("pixellab_floating_words")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Words"]
 shape = SubResource("Rect_Words")

@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" path="res://assets/objects/proper/er_mug.png" id="proper_er_mug"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/er_toolbox.png" id="proper_er_toolbox"]
 [ext_resource type="Texture2D" path="res://assets/objects/proper/er_whiteboard.png" id="proper_er_whiteboard"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/er_monitor.png" id="pixellab_er_monitor"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/er_toolbox.png" id="pixellab_er_toolbox"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/er_whiteboard.png" id="pixellab_er_whiteboard"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/er_mug.png" id="pixellab_er_mug"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Threshold"]
 size = Vector2(200, 200)
@@ -58,7 +62,7 @@ object_id = "er_monitor"
 object_name = "Monitor"
 object_description = "Lines of code scrolling past. Some are commented out with notes like 'FIXME: Kira was tired' and 'TODO: figure out if this is even possible.'"
 dialogue_node = "er_monitor"
-texture = ExtResource("proper_er_monitor")
+texture = ExtResource("pixellab_er_monitor")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Monitor"]
 shape = SubResource("Rect_Monitor")
 
@@ -68,7 +72,7 @@ object_id = "er_toolbox"
 object_name = "Toolbox"
 object_description = "A toolbox with labels on every compartment. 'Logic.' 'Grammar.' 'Hope.' The 'Hope' compartment is empty."
 dialogue_node = "er_toolbox"
-texture = ExtResource("proper_er_toolbox")
+texture = ExtResource("pixellab_er_toolbox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Toolbox"]
 shape = SubResource("Rect_Toolbox")
@@ -79,7 +83,7 @@ object_id = "er_whiteboard"
 object_name = "Whiteboard"
 object_description = "A whiteboard covered in checkboxes. Some are checked. Some are circled in red. One says: 'Remember to breathe.' It is not checked."
 dialogue_node = "er_whiteboard"
-texture = ExtResource("proper_er_whiteboard")
+texture = ExtResource("pixellab_er_whiteboard")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Whiteboard"]
 shape = SubResource("Rect_Whiteboard")
@@ -90,7 +94,7 @@ object_id = "er_mug"
 object_name = "Coffee Mug"
 object_description = "A mug that says WORLD'S MOST OKAY FIXER. The coffee inside is cold. It has been cold for a long time."
 dialogue_node = "er_mug"
-texture = ExtResource("proper_er_mug")
+texture = ExtResource("pixellab_er_mug")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Mug"]
 shape = SubResource("Rect_Mug")

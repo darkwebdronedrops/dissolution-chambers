@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" path="res://assets/objects/plant_carnivorous.png" id="4_carnivore"]
 [ext_resource type="Texture2D" path="res://assets/objects/plant_glowing_purple.png" id="5_glowplant"]
 [ext_resource type="Texture2D" path="res://assets/objects/crystal_growth.png" id="6_crystal"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/carnivorous_plant.png" id="pixellab_carnivorous_plant"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/glowing_plant.png" id="pixellab_glowing_plant"]
+[ext_resource type="Texture2D" path="res://assets/objects/pixellab/crystal_growth.png" id="pixellab_crystal_growth"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Dissolution"]
 size = Vector2(200, 200)
@@ -65,7 +68,7 @@ dialogue_node = "gr_bites"
 emotional_effect = {
 "sharpness": 1
 }
-texture = ExtResource("4_carnivore")
+texture = ExtResource("pixellab_carnivorous_plant")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Carnivore"]
 shape = SubResource("Rect_Carnivore")
@@ -79,7 +82,7 @@ dialogue_node = "gr_touch_purple"
 emotional_effect = {
 "warmth": 1
 }
-texture = ExtResource("5_glowplant")
+texture = ExtResource("pixellab_glowing_plant")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_GlowPlant"]
 shape = SubResource("Rect_Glow")
@@ -91,7 +94,7 @@ object_name = "Crystal Growth"
 object_description = "Something crystallizing out of the soil. It wasn't here yesterday."
 dialogue_node = "gr_color_now"
 memory_id = "garden_crystal_memory"
-texture = ExtResource("6_crystal")
+texture = ExtResource("pixellab_crystal_growth")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Crystal"]
 shape = SubResource("Rect_Crystal")
