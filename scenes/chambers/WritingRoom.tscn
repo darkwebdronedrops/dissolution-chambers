@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" path="res://assets/objects/desk_papers_scattered.png" id="4_papers"]
 [ext_resource type="Texture2D" path="res://assets/objects/inkwell_quill.png" id="5_inkwell"]
 [ext_resource type="Texture2D" path="res://assets/objects/floating_word_glow.png" id="6_words"]
+[ext_resource type="Texture2D" path="res://assets/objects/proper/desk_papers.png" id="proper_desk_papers"]
 
 [sub_resource type="RectangleShape2D" id="Rect_Desk"]
 size = Vector2(300, 200)
@@ -62,7 +63,7 @@ object_id = "desk_papers"
 object_name = "Scattered Papers"
 object_description = "Papers covered in half-finished sentences. Some feel true at 3am and lies at 3pm."
 dialogue_node = "wr_smaller_things"
-texture = ExtResource("4_papers")
+texture = ExtResource("proper_desk_papers")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Object_Papers"]
 shape = SubResource("Rect_Papers")

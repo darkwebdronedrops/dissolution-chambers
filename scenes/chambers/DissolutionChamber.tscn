@@ -55,7 +55,7 @@ position = Vector2(960, 900)
 shape = SubResource("Rect_Threshold")
 
 [node name="Object_Crystal" parent="." instance=ExtResource("3_clickable")]
-position = Vector2(800, 500)
+position = Vector2(800, 620)
 object_id = "dissolution_crystal"
 object_name = "Crystal Formation"
 object_description = "A crystal growing out of the floor. It hums."
@@ -67,7 +67,8 @@ texture = ExtResource("proper_dissolution_crystal")
 shape = SubResource("Rect_Crystal")
 
 [node name="Object_Words" parent="." instance=ExtResource("3_clickable")]
-position = Vector2(1100, 400)
+position = Vector2(1000, 400)
+scale = Vector2(1.3, 1.3)
 object_id = "dissolution_words"
 object_name = "Floating Words"
 object_description = "Words that someone said during dissolution. They got stuck."
