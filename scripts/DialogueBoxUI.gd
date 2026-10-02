@@ -50,6 +50,10 @@ func _on_choices_presented(options: Array[Dictionary]):
 		btn.text = choice.get("text", "...")
 		btn.custom_minimum_size = Vector2(0, 40)
 		btn.add_theme_font_size_override("font_size", 16)
+		if choice.get("_locked", false):
+			# A locked choice is a window, not a wall — show the threshold dimmed.
+			btn.modulate = Color(1, 1, 1, 0.45)
+			btn.tooltip_text = choice.get("locked_text", "Not yet.")
 		btn.pressed.connect(_on_choice_pressed.bind(i))
 		choices_container.add_child(btn)
 		choice_buttons.append(btn)
