@@ -7,6 +7,10 @@ signal dialogue_started(node_id: String)
 signal dialogue_line(text: String, speaker: String, portrait: String)
 signal choices_presented(options: Array[Dictionary])
 signal dialogue_ended()
+
+# Terminal lines (nodes with no choices) hold until the player clicks —
+# otherwise the last line of every branch is unreadable.
+var awaiting_continue: bool = false
 signal dissolution_triggered()
 
 # Merged view across all loaded chambers — all chambers are instanced
@@ -201,6 +205,7 @@ func _parse_effects(effect_str: String) -> Dictionary:
 	return effects
 
 func start_dialogue(node_id: String):
+	awaiting_continue = false
 	current_node = node_id
 	dialogue_started.emit(node_id)
 	_show_current_node()
@@ -232,12 +237,19 @@ func _show_current_node():
 	# Present choices (annotated with lock state)
 	var choices = node.get("choices", [])
 	if choices.is_empty():
-		# End of dialogue branch
-		dialogue_ended.emit()
+		# Terminal line: hold until the player clicks continue.
+		awaiting_continue = true
 	else:
 		for ch in choices:
 			ch["_locked"] = not requirements_met(ch)
 		choices_presented.emit(_typed_choices(choices))
+
+func continue_dialogue():
+	"""Player clicked to dismiss a terminal line."""
+	if not awaiting_continue:
+		return
+	awaiting_continue = false
+	dialogue_ended.emit()
 
 func _typed_choices(choices: Array) -> Array[Dictionary]:
 	var typed: Array[Dictionary] = []

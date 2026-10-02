@@ -257,7 +257,8 @@ func _on_credits_ended():
 	"""After credits, return to normal play."""
 	print("RealmController: Credits complete — returning to play")
 	ending_triggered = false
-	epilogue_shown = false
+	# epilogue_shown stays true — the epilogue is a once-per-save beat,
+	# not a doorstop between every pair of visits.
 	_start_visit()
 
 func _setup_new_game_plus():

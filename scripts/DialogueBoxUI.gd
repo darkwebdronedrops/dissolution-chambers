@@ -76,6 +76,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			dismiss = true
 		if dismiss:
 			visible = false
+			DialogueSystem.continue_dialogue()
 	print("DialogueBoxUI: Dialogue ended")
 
 func _on_dissolution_triggered():
