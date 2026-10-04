@@ -4,7 +4,10 @@ import requests, base64, io, time
 from pathlib import Path
 from PIL import Image
 
-API_KEY = "PIXELLAB_API_KEY_REDACTED"
+import os
+API_KEY = os.environ.get("PIXELLAB_API_KEY", "")
+if not API_KEY:
+    raise SystemExit("Set PIXELLAB_API_KEY in the environment")
 BASE_URL = "https://api.pixellab.ai/v1"
 OUT_BG = Path("/root/.openclaw/workspace/Creative/Kira/The_Dissolution_Chambers/assets/backgrounds")
 OUT_OBJ = Path("/root/.openclaw/workspace/Creative/Kira/The_Dissolution_Chambers/assets/objects")
