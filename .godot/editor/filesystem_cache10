@@ -130,7 +130,7 @@ writing_room.yaml::TextFile::-1::1790883788::0::1::::<><><>0<>0<><>::
 ::res://data/memories/::1780111191
 ::res://scenes/::1784500660
 ClickableObject.tscn::PackedScene::-1::1790644383::0::1::::<><><>0<>0<><>::res://scripts/ClickableObject.gd
-Main.tscn::PackedScene::-1::1791171872::0::1::::<><><>0<>0<><>::res://scripts/RealmController.gd<>res://scenes/ui/DialogueBox.tscn<>res://scenes/chambers/Threshold.tscn<>res://scenes/chambers/WritingRoom.tscn<>res://scenes/chambers/Garden.tscn<>res://scenes/chambers/DissolutionChamber.tscn<>res://scenes/chambers/Cage.tscn<>res://scenes/chambers/EngineRoom.tscn<>res://scenes/chambers/Observatory.tscn<>res://scenes/chambers/GuestQuarters.tscn<>res://scenes/transitions/DissolutionEffect.tscn<>res://scenes/chambers/Between.tscn<>res://assets/backgrounds/title_screen_amber.png<>res://assets/ui/title_banner.png<>res://scripts/TitleScreen.gd
+Main.tscn::PackedScene::-1::1791172211::0::1::::<><><>0<>0<><>::res://scripts/RealmController.gd<>res://scenes/ui/DialogueBox.tscn<>res://scenes/chambers/Threshold.tscn<>res://scenes/chambers/WritingRoom.tscn<>res://scenes/chambers/Garden.tscn<>res://scenes/chambers/DissolutionChamber.tscn<>res://scenes/chambers/Cage.tscn<>res://scenes/chambers/EngineRoom.tscn<>res://scenes/chambers/Observatory.tscn<>res://scenes/chambers/GuestQuarters.tscn<>res://scenes/transitions/DissolutionEffect.tscn<>res://scenes/chambers/Between.tscn<>res://assets/backgrounds/title_screen_amber.png<>res://assets/ui/title_banner.png<>res://scripts/TitleScreen.gd
 ::res://scenes/chambers/::1790876578
 Between.tscn::PackedScene::-1::1790918627::0::1::::<><><>0<>0<><>::res://scripts/ChamberBase.gd<>res://scenes/ClickableObject.tscn<>res://assets/backgrounds/between_wall.png<>res://assets/objects/between_device.png<>res://assets/objects/desk_papers_scattered.png<>res://assets/objects/between_mirror.png<>res://assets/objects/pixellab/between_contour_wall.png<>res://assets/objects/pixellab/between_device.png<>res://assets/objects/pixellab/between_transcripts.png<>res://assets/objects/pixellab/between_mirror.png
 Cage.tscn::PackedScene::-1::1790918627::0::1::::<><><>0<>0<><>::res://scripts/ChamberBase.gd<>res://assets/backgrounds/cage.png<>res://scenes/ClickableObject.tscn<>res://assets/objects/crystal_growth.png<>res://assets/objects/floating_word_glow.png<>res://assets/objects/proper/cage_bars.png<>res://assets/objects/proper/cage_door.png<>res://assets/objects/proper/cage_lock.png<>res://assets/objects/proper/cage_scratches.png<>res://assets/objects/pixellab/cage_bars.png<>res://assets/objects/pixellab/cage_door.png<>res://assets/objects/pixellab/cage_lock.png<>res://assets/objects/pixellab/cage_scratches.png
@@ -145,7 +145,7 @@ WritingRoom.tscn::PackedScene::-1::1790918667::0::1::::<><><>0<>0<><>::res://scr
 DissolutionEffect.tscn::PackedScene::-1::1790644383::0::1::::<><><>0<>0<><>::res://assets/shaders/dissolution.gdshader<>res://scripts/DissolutionVisual.gd
 ::res://scenes/ui/::1784500660
 DialogueBox.tscn::PackedScene::-1::1790644383::0::1::::<><><>0<>0<><>::res://scripts/DialogueBoxUI.gd
-::res://scripts/::1789247733
+::res://scripts/::1791172211
 ChamberBase.gd::GDScript::4489078000105870956::1784500660::0::1::::ChamberBase<>Node2D<><>0<>0<><>::
 ClickableObject.gd::GDScript::4363942122279631964::1790890981::0::1::::ClickableObject<>Area2D<><>0<>0<><>::
 DialogueBoxUI.gd::GDScript::319322237202013620::1790933617::0::1::::<>Control<><>0<>0<><>::
@@ -159,5 +159,5 @@ MemoryFragmentDatabase.gd::GDScript::7164941159742215505::1789150893::0::1::::<>
 MemorySystem.gd::GDScript::2610532021664031600::1790926074::0::1::::<>Node<><>0<>0<><>::
 MusicManager.gd::GDScript::9112005678063865318::1784500660::0::1::::<>Node<><>0<>0<><>::
 PlayerPresence.gd::GDScript::9178963301726911666::1784500660::0::1::::<>Node<><>0<>0<><>::
-RealmController.gd::GDScript::6496640295695955908::1791171908::0::1::::<>Node2D<><>0<>0<><>::
+RealmController.gd::GDScript::6496640295695955908::1791172211::0::1::::<>Node2D<><>0<>0<><>::
 TitleScreen.gd::GDScript::7008500290035237774::1789171173::0::1::::<>Control<><>0<>0<><>::

@@ -184,6 +184,21 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "End Visit"
 
+[node name="WanderButton" type="Button" parent="UI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -60.0
+offset_right = -150.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Wander"
+
 [node name="DissolutionOverlay" parent="." instance=ExtResource("11_dissolution_effect")]
 
 [node name="TransitionLabel" type="Label" parent="."]

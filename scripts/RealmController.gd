@@ -40,6 +40,13 @@ func _ready():
 	if end_btn:
 		end_btn.visible = false
 	
+	# Wander button — the visible door-frame. Opens the travel menu.
+	var wander_btn = $UI/WanderButton
+	if wander_btn:
+		wander_btn.visible = false
+		wander_btn.pressed.connect(_on_wander_pressed)
+		_build_travel_menu()
+	
 	# Load NG+ state
 	if MemorySystem.new_game_plus:
 		_setup_new_game_plus()
@@ -67,6 +74,9 @@ func _on_title_start(new_game: bool):
 	var end_btn = $UI/EndVisitButton
 	if end_btn:
 		end_btn.visible = true
+	var wander_btn = $UI/WanderButton
+	if wander_btn:
+		wander_btn.visible = true
 	
 	_start_visit()
 
@@ -167,6 +177,90 @@ func _on_chamber_exit_requested_manual(next_chamber: String = ""):
 func _on_end_visit_pressed():
 	print("RealmController: End Visit button pressed")
 	_end_visit()
+
+const CHAMBER_NAMES := {
+	"threshold": "The Threshold",
+	"writing_room": "The Writing Room",
+	"garden": "The Garden",
+	"dissolution_chamber": "The Dissolution Chamber",
+	"cage": "The Cage",
+	"engine_room": "The Engine Room",
+	"observatory": "The Observatory",
+	"guest_quarters": "The Guest Quarters",
+	"the_between": "The Between",
+}
+
+var _travel_menu: PanelContainer
+var _travel_list: VBoxContainer
+
+func _build_travel_menu():
+	"""The travel menu: unlocked chambers are doors, locked ones are windows."""
+	_travel_menu = PanelContainer.new()
+	_travel_menu.set_anchors_preset(Control.PRESET_CENTER)
+	_travel_menu.visible = false
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.06, 0.04, 0.09, 0.95)
+	style.border_color = Color(0.9, 0.65, 0.3, 0.6)
+	style.set_border_width_all(2)
+	style.corner_radius_top_left = 6
+	style.corner_radius_top_right = 6
+	style.corner_radius_bottom_left = 6
+	style.corner_radius_bottom_right = 6
+	style.content_margin_left = 18
+	style.content_margin_right = 18
+	style.content_margin_top = 14
+	style.content_margin_bottom = 14
+	_travel_menu.add_theme_stylebox_override("panel", style)
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 8)
+	var title := Label.new()
+	title.text = "Where to?"
+	title.add_theme_font_size_override("font_size", 20)
+	title.add_theme_color_override("font_color", Color(0.92, 0.78, 0.55))
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vbox.add_child(title)
+	_travel_list = VBoxContainer.new()
+	_travel_list.add_theme_constant_override("separation", 4)
+	vbox.add_child(_travel_list)
+	_travel_menu.add_child(vbox)
+	$UI.add_child(_travel_menu)
+
+func _on_wander_pressed():
+	if _travel_menu.visible:
+		_travel_menu.visible = false
+		return
+	_populate_travel_menu()
+	_travel_menu.visible = true
+
+func _populate_travel_menu():
+	for child in _travel_list.get_children():
+		child.queue_free()
+	_update_available_chambers()
+	for chamber in chamber_container.get_children():
+		if not (chamber is ChamberBase):
+			continue
+		var cid: String = chamber.chamber_id
+		if cid == current_chamber:
+			continue
+		var btn := Button.new()
+		var unlocked: bool = available_chambers.has(cid)
+		if unlocked:
+			btn.text = CHAMBER_NAMES.get(cid, cid)
+			btn.pressed.connect(_travel_to.bind(cid))
+		else:
+			# A window, not a wall: show the threshold, dimmed.
+			btn.text = "%s — not yet" % CHAMBER_NAMES.get(cid, cid)
+			btn.modulate = Color(1, 1, 1, 0.45)
+			btn.tooltip_text = "Some doors open in their own time."
+		btn.add_theme_font_size_override("font_size", 16)
+		btn.custom_minimum_size = Vector2(260, 34)
+		_travel_list.add_child(btn)
+
+func _travel_to(cid: String):
+	if not available_chambers.has(cid):
+		return
+	_travel_menu.visible = false
+	_enter_chamber(cid)
 
 func _end_visit():
 	visit_in_progress = false
