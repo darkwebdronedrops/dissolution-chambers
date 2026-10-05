@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/writing_room.ogg-1f3cb9703c6d983fc6c0346b1a6c
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

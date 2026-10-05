@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/garden.ogg-153297deb7abf14e4aed31e6d4870abe.o
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

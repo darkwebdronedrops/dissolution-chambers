@@ -51,6 +51,7 @@ func _show_title_screen():
 	print("RealmController: Title screen shown")
 	# TitleScreen handles its own display
 	# It will emit start_pressed when the player is ready
+	MusicManager.play_title_music()
 
 func _on_title_start(new_game: bool):
 	"""Called when player presses Enter or Begin Anew on title screen."""

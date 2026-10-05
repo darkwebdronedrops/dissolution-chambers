@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/dissolution_chamber.ogg-03b51aaab2d42488a84b7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

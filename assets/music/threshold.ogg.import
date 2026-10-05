@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/threshold.ogg-7522f71a83d9b6dcb2e0a5f5f7d65d7
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
