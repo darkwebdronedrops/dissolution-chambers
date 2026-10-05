@@ -9,6 +9,7 @@ extends Control
 @onready var choices_container = $Background/ChoicesContainer
 
 var choice_buttons: Array[Button] = []
+var done_button: Button = null
 
 func _ready():
 	visible = false
@@ -17,6 +18,7 @@ func _ready():
 	DialogueSystem.choices_presented.connect(_on_choices_presented)
 	DialogueSystem.dialogue_ended.connect(_on_dialogue_ended)
 	DialogueSystem.dissolution_triggered.connect(_on_dissolution_triggered)
+	DialogueSystem.hold_for_continue.connect(_show_done)
 	print("DialogueBoxUI: Ready")
 
 func _on_dialogue_started(node_id: String):
@@ -29,6 +31,7 @@ func _on_dialogue_line(text: String, speaker: String, portrait_path: String):
 	visible = true
 	speaker_label.text = speaker
 	dialogue_text.text = text
+	_hide_done()
 	
 	# Load portrait
 	if not portrait_path.is_empty() and ResourceLoader.exists(portrait_path):
@@ -57,6 +60,29 @@ func _on_choices_presented(options: Array[Dictionary]):
 		btn.pressed.connect(_on_choice_pressed.bind(i))
 		choices_container.add_child(btn)
 		choice_buttons.append(btn)
+	_hide_done()
+
+func _show_done():
+	"""Terminal line: give the player an explicit way to close the conversation."""
+	if done_button == null:
+		done_button = Button.new()
+		done_button.text = "Done"
+		done_button.custom_minimum_size = Vector2(90, 32)
+		done_button.add_theme_font_size_override("font_size", 14)
+		done_button.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+		done_button.position = Vector2(-100, -40)
+		done_button.pressed.connect(_on_done_pressed)
+		add_child(done_button)
+	done_button.visible = true
+
+func _hide_done():
+	if done_button:
+		done_button.visible = false
+
+func _on_done_pressed():
+	_hide_done()
+	visible = false
+	DialogueSystem.continue_dialogue()
 
 func _on_choice_pressed(index: int):
 	DialogueSystem.make_choice(index)
@@ -64,6 +90,7 @@ func _on_choice_pressed(index: int):
 
 func _on_dialogue_ended():
 	visible = false
+	_hide_done()
 	_clear_choices()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -76,11 +103,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			dismiss = true
 		if dismiss:
 			visible = false
+			_hide_done()
 			DialogueSystem.continue_dialogue()
 	print("DialogueBoxUI: Dialogue ended")
 
 func _on_dissolution_triggered():
 	visible = false
+	_hide_done()
 	_clear_choices()
 	print("DialogueBoxUI: Dissolution triggered — hiding dialogue")
 

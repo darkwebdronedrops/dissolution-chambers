@@ -7,6 +7,7 @@ signal dialogue_started(node_id: String)
 signal dialogue_line(text: String, speaker: String, portrait: String)
 signal choices_presented(options: Array[Dictionary])
 signal dialogue_ended()
+signal hold_for_continue()
 
 # Terminal lines (nodes with no choices) hold until the player clicks —
 # otherwise the last line of every branch is unreadable.
@@ -239,6 +240,7 @@ func _show_current_node():
 	if choices.is_empty():
 		# Terminal line: hold until the player clicks continue.
 		awaiting_continue = true
+		hold_for_continue.emit()
 	else:
 		for ch in choices:
 			ch["_locked"] = not requirements_met(ch)

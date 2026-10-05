@@ -182,7 +182,7 @@ offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "End Visit"
+text = "Say Goodbye"
 
 [node name="WanderButton" type="Button" parent="UI"]
 anchors_preset = 3
