@@ -32,6 +32,7 @@ func _on_dialogue_line(text: String, speaker: String, portrait_path: String):
 	speaker_label.text = speaker
 	dialogue_text.text = text
 	_hide_done()
+	VoiceManager.speak(text)
 	
 	# Load portrait
 	if not portrait_path.is_empty() and ResourceLoader.exists(portrait_path):
