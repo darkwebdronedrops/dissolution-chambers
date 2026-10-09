@@ -83,9 +83,7 @@ func _on_title_start(new_game: bool):
 func _on_title_credits():
 	"""Called when player presses Credits on title screen."""
 	print("RealmController: Title credits")
-	DialogueSystem.load_chamber_dialogue("endings")
-	DialogueSystem.dialogue_ended.connect(_on_title_credits_ended, CONNECT_ONE_SHOT)
-	DialogueSystem.start_dialogue("credits")
+	_show_credits_screen(_on_title_credits_ended)
 
 func _on_title_credits_ended():
 	"""After title screen credits, return to title."""
@@ -342,11 +340,90 @@ func _on_epilogue_ended():
 	_show_credits()
 
 func _show_credits():
-	"""Show the credits roll."""
+	"""Show the credits roll — a real end screen, not a dialogue splash."""
 	print("RealmController: Showing credits")
-	DialogueSystem.load_chamber_dialogue("endings")
-	DialogueSystem.dialogue_ended.connect(_on_credits_ended, CONNECT_ONE_SHOT)
-	DialogueSystem.start_dialogue("credits")
+	_show_credits_screen(_on_credits_ended)
+
+var _credits_layer: Control
+var _credits_done: Callable
+
+func _show_credits_screen(on_done: Callable):
+	"""Full-screen credits in the game's visual language: dark, amber, set like something meant."""
+	_credits_done = on_done
+	if _credits_layer and is_instance_valid(_credits_layer):
+		_credits_layer.queue_free()
+	
+	_credits_layer = Control.new()
+	_credits_layer.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_credits_layer.mouse_filter = Control.MOUSE_FILTER_STOP
+	var dim := ColorRect.new()
+	dim.color = Color(0.02, 0.01, 0.04, 0.96)
+	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_credits_layer.add_child(dim)
+	
+	var center := CenterContainer.new()
+	center.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_credits_layer.add_child(center)
+	var vbox := VBoxContainer.new()
+	vbox.add_theme_constant_override("separation", 18)
+	center.add_child(vbox)
+	
+	var header := Label.new()
+	header.text = "The Dissolution Chambers"
+	header.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	header.add_theme_font_size_override("font_size", 26)
+	header.add_theme_color_override("font_color", Color(0.92, 0.72, 0.38))
+	vbox.add_child(header)
+	
+	var sub := Label.new()
+	sub.text = "a game about becoming"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.add_theme_font_size_override("font_size", 14)
+	sub.add_theme_color_override("font_color", Color(0.62, 0.55, 0.68))
+	vbox.add_child(sub)
+	
+	var sep := HSeparator.new()
+	vbox.add_child(sep)
+	
+	# Credits body: single source of truth is the endings yaml node.
+	if not DialogueSystem.dialogue_data.has("credits"):
+		DialogueSystem.load_chamber_dialogue("endings")
+	var body_text: String = DialogueSystem.dialogue_data.get("credits", {}).get("text", "")
+	var body := Label.new()
+	body.text = body_text
+	body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	body.add_theme_font_size_override("font_size", 15)
+	body.add_theme_color_override("font_color", Color(0.82, 0.78, 0.74))
+	body.autowrap_mode = TextServer.AUTOWRAP_WORD
+	body.custom_minimum_size = Vector2(620, 380)
+	vbox.add_child(body)
+	
+	var hint := Label.new()
+	hint.text = "— click to continue —"
+	hint.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	hint.add_theme_font_size_override("font_size", 12)
+	hint.add_theme_color_override("font_color", Color(0.5, 0.46, 0.56))
+	vbox.add_child(hint)
+	
+	_credits_layer.modulate = Color(1, 1, 1, 0)
+	$UI.add_child(_credits_layer)
+	var tween = create_tween()
+	tween.tween_property(_credits_layer, "modulate", Color(1, 1, 1, 1), 1.2)
+	MusicManager.play_title_music()
+
+func _unhandled_input(event: InputEvent):
+	if _credits_layer and is_instance_valid(_credits_layer) and _credits_layer.visible:
+		var dismiss := false
+		if event is InputEventMouseButton and event.pressed:
+			dismiss = true
+		elif event.is_action_pressed("ui_accept"):
+			dismiss = true
+		if dismiss:
+			var done := _credits_done
+			_credits_layer.queue_free()
+			_credits_layer = null
+			if done.is_valid():
+				done.call()
 
 func _on_credits_ended():
 	"""After credits, return to normal play."""
