@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cpdtokfj7hga8"
-valid=false
+uid="uid://d4m1uy8enfbtt"
+path="res://.godot/imported/gq_timezone_clock_14_hours.ogg-5a1e64ac02b22f5f294219fd46f6eff6.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/gq_timezone_clock_14_hours.ogg"
+dest_files=["res://.godot/imported/gq_timezone_clock_14_hours.ogg-5a1e64ac02b22f5f294219fd46f6eff6.oggvorbisstr"]
 
 [params]
 

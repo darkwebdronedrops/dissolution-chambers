@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://b1nebyen14ovq"
-valid=false
+uid="uid://dllw64p6o3e1e"
+path="res://.godot/imported/garden_soil_planting.ogg-c88c454d6388e9d9bca45d67e314b845.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/garden_soil_planting.ogg"
+dest_files=["res://.godot/imported/garden_soil_planting.ogg-c88c454d6388e9d9bca45d67e314b845.oggvorbisstr"]
 
 [params]
 

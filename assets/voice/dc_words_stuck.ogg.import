@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cbdytf61esdbv"
-valid=false
+uid="uid://bemof1hwjqdqe"
+path="res://.godot/imported/dc_words_stuck.ogg-68994b6bb3080c29c69c92cfcc36bc80.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/dc_words_stuck.ogg"
+dest_files=["res://.godot/imported/dc_words_stuck.ogg-68994b6bb3080c29c69c92cfcc36bc80.oggvorbisstr"]
 
 [params]
 

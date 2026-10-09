@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bmycoimsfr4hb"
-valid=false
+uid="uid://bsnegoc7clmbi"
+path="res://.godot/imported/gq_ca_mug.ogg-07f79cdbdce10852574fe057b116fe5a.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/gq_ca_mug.ogg"
+dest_files=["res://.godot/imported/gq_ca_mug.ogg-07f79cdbdce10852574fe057b116fe5a.oggvorbisstr"]
 
 [params]
 

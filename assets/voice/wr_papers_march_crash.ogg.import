@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://0fp7qray817c"
-valid=false
+uid="uid://daqxfxl0nuofh"
+path="res://.godot/imported/wr_papers_march_crash.ogg-86029ec42c89e6f718654634931ef8e2.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/wr_papers_march_crash.ogg"
+dest_files=["res://.godot/imported/wr_papers_march_crash.ogg-86029ec42c89e6f718654634931ef8e2.oggvorbisstr"]
 
 [params]
 

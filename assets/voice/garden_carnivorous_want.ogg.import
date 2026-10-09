@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dsh8nomj40fgd"
-valid=false
+uid="uid://c5k8fxocdyfvv"
+path="res://.godot/imported/garden_carnivorous_want.ogg-438cc307e21e177913b2de74e5f73745.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/garden_carnivorous_want.ogg"
+dest_files=["res://.godot/imported/garden_carnivorous_want.ogg-438cc307e21e177913b2de74e5f73745.oggvorbisstr"]
 
 [params]
 

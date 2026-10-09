@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://b43lrr7840wf4"
-valid=false
+uid="uid://3icuynbb2wtg"
+path="res://.godot/imported/th_bell_first_ring.ogg-92d1ebc6b78c2c6935edbd95edaf92da.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/th_bell_first_ring.ogg"
+dest_files=["res://.godot/imported/th_bell_first_ring.ogg-92d1ebc6b78c2c6935edbd95edaf92da.oggvorbisstr"]
 
 [params]
 

@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://b7e2web500e7c"
-valid=false
+uid="uid://ckl6a5ra74rww"
+path="res://.godot/imported/garden_seed_compaction.ogg-3517100f4c3ca20405e7fc799421b4f6.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/garden_seed_compaction.ogg"
+dest_files=["res://.godot/imported/garden_seed_compaction.ogg-3517100f4c3ca20405e7fc799421b4f6.oggvorbisstr"]
 
 [params]
 

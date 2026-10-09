@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dfh6okx4igtcw"
-valid=false
+uid="uid://g85girfuu8ia"
+path="res://.godot/imported/wr_inkwell_first.ogg-5705e557912d08d800be923e5ecc8b90.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/wr_inkwell_first.ogg"
+dest_files=["res://.godot/imported/wr_inkwell_first.ogg-5705e557912d08d800be923e5ecc8b90.oggvorbisstr"]
 
 [params]
 

@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dhvdha102158e"
-valid=false
+uid="uid://ybdt7ptrt573"
+path="res://.godot/imported/threshold_intro.ogg-1b058cf8c329c6f21cb48ea20955b363.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/threshold_intro.ogg"
+dest_files=["res://.godot/imported/threshold_intro.ogg-1b058cf8c329c6f21cb48ea20955b363.oggvorbisstr"]
 
 [params]
 

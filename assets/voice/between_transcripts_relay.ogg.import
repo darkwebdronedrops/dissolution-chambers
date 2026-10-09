@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://hg8tigpvgpfb"
-valid=false
+uid="uid://4ofetlnksoav"
+path="res://.godot/imported/between_transcripts_relay.ogg-458dbf9d6320466b6fdb4a7dde435f72.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/between_transcripts_relay.ogg"
+dest_files=["res://.godot/imported/between_transcripts_relay.ogg-458dbf9d6320466b6fdb4a7dde435f72.oggvorbisstr"]
 
 [params]
 

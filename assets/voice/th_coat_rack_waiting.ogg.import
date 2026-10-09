@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bhks5xygao83i"
-valid=false
+uid="uid://dr2gm32l521t8"
+path="res://.godot/imported/th_coat_rack_waiting.ogg-f29e06e7b301e80ef8a83ac5aa637659.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/th_coat_rack_waiting.ogg"
+dest_files=["res://.godot/imported/th_coat_rack_waiting.ogg-f29e06e7b301e80ef8a83ac5aa637659.oggvorbisstr"]
 
 [params]
 

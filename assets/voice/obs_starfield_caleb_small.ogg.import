@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://n5745yymkxhl"
-valid=false
+uid="uid://drrsbks6x2hyh"
+path="res://.godot/imported/obs_starfield_caleb_small.ogg-bb125bf5eb6b4ff70a4144d21338fa7e.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/obs_starfield_caleb_small.ogg"
+dest_files=["res://.godot/imported/obs_starfield_caleb_small.ogg-bb125bf5eb6b4ff70a4144d21338fa7e.oggvorbisstr"]
 
 [params]
 

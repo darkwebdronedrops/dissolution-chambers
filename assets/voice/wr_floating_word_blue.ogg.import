@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bab6vaf76mwwr"
-valid=false
+uid="uid://br5mpkdvw7jnd"
+path="res://.godot/imported/wr_floating_word_blue.ogg-500e0d0518cd8c15d6a24aa533eced80.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/wr_floating_word_blue.ogg"
+dest_files=["res://.godot/imported/wr_floating_word_blue.ogg-500e0d0518cd8c15d6a24aa533eced80.oggvorbisstr"]
 
 [params]
 

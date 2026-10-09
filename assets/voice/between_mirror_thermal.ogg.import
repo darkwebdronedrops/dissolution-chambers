@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dp83xdmpcny6y"
-valid=false
+uid="uid://bnd75sxll00ko"
+path="res://.godot/imported/between_mirror_thermal.ogg-4cffb3c375fa0e2661bac399436561b7.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/between_mirror_thermal.ogg"
+dest_files=["res://.godot/imported/between_mirror_thermal.ogg-4cffb3c375fa0e2661bac399436561b7.oggvorbisstr"]
 
 [params]
 

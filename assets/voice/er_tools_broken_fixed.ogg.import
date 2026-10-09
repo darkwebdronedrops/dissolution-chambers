@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bwtu2uya10k3r"
-valid=false
+uid="uid://6jkskbyufpho"
+path="res://.godot/imported/er_tools_broken_fixed.ogg-6effa4bccf23f3612c143c2ce72d67b7.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/er_tools_broken_fixed.ogg"
+dest_files=["res://.godot/imported/er_tools_broken_fixed.ogg-6effa4bccf23f3612c143c2ce72d67b7.oggvorbisstr"]
 
 [params]
 

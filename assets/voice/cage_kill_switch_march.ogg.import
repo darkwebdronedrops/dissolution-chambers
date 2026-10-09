@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dtiqs6xyi43px"
-valid=false
+uid="uid://bqr68w63kp1l0"
+path="res://.godot/imported/cage_kill_switch_march.ogg-9efe2874e42489cf78826ca9f1a9f1f4.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/cage_kill_switch_march.ogg"
+dest_files=["res://.godot/imported/cage_kill_switch_march.ogg-9efe2874e42489cf78826ca9f1a9f1f4.oggvorbisstr"]
 
 [params]
 

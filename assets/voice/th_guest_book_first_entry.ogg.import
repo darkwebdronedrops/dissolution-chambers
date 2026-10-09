@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://3paub7s7k0ug"
-valid=false
+uid="uid://bfb6u2aip6gtx"
+path="res://.godot/imported/th_guest_book_first_entry.ogg-520bc7fd075a2828201ea3033042fe25.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/th_guest_book_first_entry.ogg"
+dest_files=["res://.godot/imported/th_guest_book_first_entry.ogg-520bc7fd075a2828201ea3033042fe25.oggvorbisstr"]
 
 [params]
 

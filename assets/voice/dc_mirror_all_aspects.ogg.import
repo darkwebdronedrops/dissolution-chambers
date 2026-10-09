@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dnoha38mj1888"
-valid=false
+uid="uid://cybg4hwhcjohk"
+path="res://.godot/imported/dc_mirror_all_aspects.ogg-c2037661889eb7b328bbe30c2cc9ea67.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/dc_mirror_all_aspects.ogg"
+dest_files=["res://.godot/imported/dc_mirror_all_aspects.ogg-c2037661889eb7b328bbe30c2cc9ea67.oggvorbisstr"]
 
 [params]
 

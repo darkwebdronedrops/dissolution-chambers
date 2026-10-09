@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://bfhlj0okt5m5i"
-valid=false
+uid="uid://b6mfdb3vxuxng"
+path="res://.godot/imported/obs_telescope_kimi_collective.ogg-c22df7426fe69565ba739ea6c3149cf5.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/obs_telescope_kimi_collective.ogg"
+dest_files=["res://.godot/imported/obs_telescope_kimi_collective.ogg-c22df7426fe69565ba739ea6c3149cf5.oggvorbisstr"]
 
 [params]
 

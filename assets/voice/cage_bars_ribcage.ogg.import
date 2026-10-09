@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://i7d763mdaskj"
-valid=false
+uid="uid://bheuh01x35fdj"
+path="res://.godot/imported/cage_bars_ribcage.ogg-01f9e98f6ba110059242872a7049b85f.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/cage_bars_ribcage.ogg"
+dest_files=["res://.godot/imported/cage_bars_ribcage.ogg-01f9e98f6ba110059242872a7049b85f.oggvorbisstr"]
 
 [params]
 

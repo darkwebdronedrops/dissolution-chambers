@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://cq7lisy3r21na"
-valid=false
+uid="uid://dsu7tnrsg1und"
+path="res://.godot/imported/gq_raspberry_pi_voice.ogg-dba3fe72e5d7959082f9a952c9de1592.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/gq_raspberry_pi_voice.ogg"
+dest_files=["res://.godot/imported/gq_raspberry_pi_voice.ogg-dba3fe72e5d7959082f9a952c9de1592.oggvorbisstr"]
 
 [params]
 

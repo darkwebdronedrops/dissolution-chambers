@@ -2,12 +2,13 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://dhu7b0rff4btx"
-valid=false
+uid="uid://chcen3y0rg7i1"
+path="res://.godot/imported/between_contour_wall_history.ogg-e8262d7befa688712b9ae1f0681c932a.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/voice/between_contour_wall_history.ogg"
+dest_files=["res://.godot/imported/between_contour_wall_history.ogg-e8262d7befa688712b9ae1f0681c932a.oggvorbisstr"]
 
 [params]
 
